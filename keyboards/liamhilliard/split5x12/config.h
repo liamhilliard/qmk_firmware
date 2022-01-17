@@ -26,9 +26,41 @@
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
  */
+
+
+/*
+ * Pro Micro Pinout (front side up)
+ *            ╔════╗
+ * ┌──────────╨────╨──────────┐
+ * │ D3/TX0               RAW │
+ * │                          │
+ * │ D2/RX1               GND │
+ * │                          │
+ * │ GND                  RST │
+ * │                          │
+ * │ GND                  VCC │
+ * │                          │
+ * │ D1/2               F4/A3 │
+ * │            ╱╲            │
+ * │ D0/3      ╱  ╲     F5/A2 │
+ * │           ╲  ╱           │
+ * │ D4/4       ╲╱      F6/A1 │
+ * │                          │
+ * │ C6/5               F7/A0 │
+ * │                          │
+ * │ D7/6               B1/15 │
+ * │                          │
+ * │ E6/7               B3/14 │
+ * │                          │
+ * │ B4/8               B2/16 │
+ * │                          │
+ * │ B5/9               B6/10 │
+ * └──────────────────────────┘
+ *
+ */
+
 #define MATRIX_ROW_PINS { C6, D7, E6, B4, B5 }
 #define MATRIX_COL_PINS { F6, F7, B1, B3, B2, B6}
-#define SPLIT_HAND_PIN D4
 
 /* COL2ROW, ROW2COL */
 #define DIODE_DIRECTION COL2ROW
@@ -36,7 +68,13 @@
 /*
  * Split Keyboard specific options, make sure you have 'SPLIT_KEYBOARD = yes' in your rules.mk, and define SOFT_SERIAL_PIN.
  */
+// Pin used for serial communication between the two halves of the split
 #define SOFT_SERIAL_PIN D1  // or D1, D2, D3, E6
+/* This pin will let the firmware know which side of the split keyboard
+ * it's on. Pulled high means the left, low means the right
+ */
+#define SPLIT_HAND_PIN D4
+
 
 //#define LED_NUM_LOCK_PIN B0
 //#define LED_CAPS_LOCK_PIN B1

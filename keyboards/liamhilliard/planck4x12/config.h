@@ -25,6 +25,37 @@
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
  */
+
+/*
+ * Pro Micro Pinout (front side up)
+ *            ╔════╗
+ * ┌──────────╨────╨──────────┐
+ * │ D3/TX0               RAW │
+ * │                          │
+ * │ D2/RX1               GND │
+ * │                          │
+ * │ GND                  RST │
+ * │                          │
+ * │ GND                  VCC │
+ * │                          │
+ * │ D1/2               F4/A3 │
+ * │            ╱╲            │
+ * │ D0/3      ╱  ╲     F5/A2 │
+ * │           ╲  ╱           │
+ * │ D4/4       ╲╱      F6/A1 │
+ * │                          │
+ * │ C6/5               F7/A0 │
+ * │                          │
+ * │ D7/6               B1/15 │
+ * │                          │
+ * │ E6/7               B3/14 │
+ * │                          │
+ * │ B4/8               B2/16 │
+ * │                          │
+ * │ B5/9               B6/10 │
+ * └──────────────────────────┘
+ *
+ */
 #define MATRIX_ROW_PINS { F5, F4, D0, D1 }
 #define MATRIX_COL_PINS { B6, B2, B3, B1, F7, F6, D4, C6, D7, D2, B4, B5  }
 #define UNUSED_PINS
