@@ -15,6 +15,7 @@
 /* key matrix size */
 #define MATRIX_ROWS 4
 #define MATRIX_COLS 12
+
 /*
  * Keyboard Matrix Assignments
  *
@@ -67,6 +68,11 @@
  * Split Keyboard specific options, make sure you have 'SPLIT_KEYBOARD = yes' in your rules.mk, and define SOFT_SERIAL_PIN.
  */
 #define SOFT_SERIAL_PIN D0  // or D1, D2, D3, E6
+
+
+// Home row mods configs
+#define IGNORE_MOD_TAP_INTERRUPT
+#define TAPPING_TERM 250
 
 //#define LED_NUM_LOCK_PIN B0
 //#define LED_CAPS_LOCK_PIN B1

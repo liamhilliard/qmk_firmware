@@ -75,6 +75,9 @@
  */
 #define SPLIT_HAND_PIN D4
 
+// Home row mods configs
+#define IGNORE_MOD_TAP_INTERRUPT
+#define TAPPING_TERM 250
 
 //#define LED_NUM_LOCK_PIN B0
 //#define LED_CAPS_LOCK_PIN B1
