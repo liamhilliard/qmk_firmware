@@ -1,6 +1,6 @@
-# planck4x12
+# 36key
 
-![planck4x12](imgur.com image replace me!)
+![36key](imgur.com image replace me!)
 
 *A short description of the keyboard/project*
 
@@ -10,11 +10,11 @@
 
 Make example for this keyboard (after setting up your build environment):
 
-    make planck4x12:default
+    make 36key:default
 
 Flashing example for this keyboard:
 
-    make planck4x12:default:flash
+    make 36key:default:flash
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
 
