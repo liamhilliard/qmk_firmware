@@ -1,4 +1,4 @@
-// Copyright 2022 Liam Hilliard (@Liam Hilliard)
+// Copyright 2022 x04e (@x04e)
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
@@ -9,7 +9,7 @@
 #define VENDOR_ID    0xFEED
 #define PRODUCT_ID   0x0000
 #define DEVICE_VER   0x0001
-#define MANUFACTURER Liam Hilliard
+#define MANUFACTURER x04e
 #define PRODUCT      split5x12
 
 /* key matrix size */

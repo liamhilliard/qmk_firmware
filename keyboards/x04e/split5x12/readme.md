@@ -4,7 +4,7 @@
 
 *A short description of the keyboard/project*
 
-* Keyboard Maintainer: [Liam Hilliard](https://github.com/Liam Hilliard)
+* Keyboard Maintainer: [x04e](https://github.com/x04e)
 * Hardware Supported: *The PCBs, controllers supported*
 * Hardware Availability: *Links to where you can find this hardware*
 
