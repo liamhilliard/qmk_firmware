@@ -4,6 +4,7 @@
 
 // QMK codes
 #define ___        KC_TRNS
+#define TRNS       KC_TRNS
 #define xxx        KC_NO
 
 
