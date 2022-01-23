@@ -11,8 +11,8 @@
 // Control keys
 #define _ESC        KC_ESCAPE
 #define _TAB        KC_TAB
-#define _CTRL       KC_LCTRL
-#define _SHFT       KC_LSFT
+#define _CTL        KC_LCTRL
+#define _SFT        KC_LSFT
 #define _ALT        KC_LALT
 #define _GUI        KC_LGUI
 #define _DEL        KC_DELETE
@@ -29,6 +29,36 @@
 #define _END        KC_END
 #define _INS        KC_INSERT
 #define _CAPS       KC_CAPS
+
+
+// OneShot modifiers
+#define _OS_CTL     OSM(MOD_LCTL)
+#define _OS_SFT     OSM(MOD_LSFT)
+#define _OS_ALT     OSM(MOD_LALT)
+
+
+// Home row mods
+// QWERTY
+#define _A_HQ       LGUI_T(_A)
+#define _S_HQ       LALT_T(_S)
+#define _D_HQ       LCTL_T(_D)
+#define _F_HQ       LSFT_T(_F)
+//-----------
+#define _J_HQ       LSFT_T(_J)
+#define _K_HQ       LCTL_T(_K)
+#define _L_HQ       LALT_T(_L)
+#define _SCN_HQ     LGUI_T(_SCN)
+// COLEMAK
+#define _A_HC       LGUI_T(_A)
+#define _R_HC       LALT_T(_R)
+#define _S_HC       LCTL_T(_S)
+#define _T_HC       LSFT_T(_T)
+//-----------
+#define _N_HC       LSFT_T(_N)
+#define _E_HC       LCTL_T(_E)
+#define _I_HC       LALT_T(_I)
+#define _O_HC       LGUI_T(_O)
+
 
 // Function keys
 #define _F1         KC_F1
