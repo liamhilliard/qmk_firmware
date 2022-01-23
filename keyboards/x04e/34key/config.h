@@ -10,11 +10,21 @@
 #define PRODUCT_ID   0x0000
 #define DEVICE_VER   0x0001
 #define MANUFACTURER x04e
-#define PRODUCT      planck4x12
+#define PRODUCT      34key
 
 /* key matrix size */
 #define MATRIX_ROWS 4
-#define MATRIX_COLS 12
+#define MATRIX_COLS 10
+/*
+ * Keyboard Matrix Assignments
+ *
+ * Change this to how you wired your keyboard
+ * COLS: AVR pins used for columns, left to right
+ * ROWS: AVR pins used for rows, top to bottom
+ * DIODE_DIRECTION: COL2ROW = COL = Anode (+), ROW = Cathode (-, marked on diode)
+ *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
+ *
+ */
 
 /*
  * Pro Micro Pinout (front side up)
@@ -47,7 +57,7 @@
  *
  */
 #define MATRIX_ROW_PINS { F5, F4, D0, D1 }
-#define MATRIX_COL_PINS { B6, B2, B3, B1, F7, F6, D4, C6, D7, D2, B4, B5  }
+#define MATRIX_COL_PINS { B6, B2, B3, B1, F7, F6, D4, C6, D7, D2 }
 #define UNUSED_PINS
 
 /* COL2ROW, ROW2COL */
@@ -58,11 +68,9 @@
  */
 #define SOFT_SERIAL_PIN D0  // or D1, D2, D3, E6
 
-
 // Home row mods configs
 #define IGNORE_MOD_TAP_INTERRUPT
-#define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 250
+#define TAPPING_TERM 200
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
