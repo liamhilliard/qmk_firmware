@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         CTRL    ALT     xxx     xxx     SYMBOL  SPACE  │SHIFT   NUMBER  PLAY    VOL+    VOL-    DEL
         ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
         _TAB,   _Q,     _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,     _P,     _SQT,   \
-        _ESC,   _A_HQ,  _S_HQ,  _D_HQ,  _F_HQ,  _G,     _H,     _J_HQ,  _K_HQ,  _L_HQ,  _SCN,   _BSPC,  \
+        _ESC,   _A_HQ,  _S_HQ,  _D_HQ,  _F_HQ,  _G,     _H,     _J_HQ,  _K_HQ,  _L_HQ,  _SCN_HQ,_BSPC,  \
         _SFT,   _Z,     _X,     _C,     _V,     _B,     _N,     _M,     _COM,   _DOT,   _SL,    _ENT,   \
         _CTL,   _ALT,   xxx,    xxx,    SYMBOL, _SPC,   _SFT,   NUMBER, _V_P,   _V_VD,  _V_VU,  _DEL    \
     ),
@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         CTRL    ALT     xxx     xxx     SYMBOL  SPACE  │SHIFT   NUMBER  PLAY    VOL+    VOL-    DEL
         ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
         _TAB,   _Q,     _W,     _F,     _P,     _B,     _J,     _L,     _U,     _Y,     _SCN,   _SQT,   \
-        _ESC,   _A_HC,  _R_HC,  _S_HC,  _T_HC,  _G,     _M,     _N_HC,  _E_HC,  _I_HC,  _O,     _BSPC,  \
+        _ESC,   _A_HC,  _R_HC,  _S_HC,  _T_HC,  _G,     _M,     _N_HC,  _E_HC,  _I_HC,  _O_HC,  _BSPC,  \
         _SFT,   _Z,     _X,     _C,     _D,     _V,     _K,     _H,     _COM,   _DOT,   _SL,    _ENT,   \
         _CTL,   _ALT,   xxx,    xxx,    SYMBOL, _SPC,   _SFT,   NUMBER, _V_P,   _V_VU,  _V_VD,  _DEL    \
     ),
