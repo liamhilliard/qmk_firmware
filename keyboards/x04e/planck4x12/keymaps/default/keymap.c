@@ -93,9 +93,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         CTRL    ALT     xxx     xxx     SYMBOL  SPACE  │SHIFT   NUMBER  PLAY    VOL+    VOL-    DEL
         ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
         _TAB,   _Q,     _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,     _P,     _SQT,   \
-        _ESC,   _A_HQ,  _S_HQ,  _D_HQ,  _F_HQ,  _G,     _H,     _J_HQ,  _K_HQ,  _L_HQ,  _SCN,   _BSPC,  \
+        _ESC,   _A,     _S,     _D,     _F,     _G,     _H,     _J,     _K,     _L,     _SCN,   _BSPC,  \
         _SFT,   _Z,     _X,     _C,     _V,     _B,     _N,     _M,     _COM,   _DOT,   _SL,    _ENT,   \
-        _CTL,   _ALT,   xxx,    xxx,    SYMBOL, _SPC,   _SFT,   NUMBER, _V_P,   _V_VU,  _V_VD,  _DEL    \
+        _CTL,   _ALT,   xxx,    _GUI,   SYMBOL, _SPC,   _SFT,   NUMBER, _V_P,   _V_VU,  _V_VD,  _DEL    \
     )
 
 };
