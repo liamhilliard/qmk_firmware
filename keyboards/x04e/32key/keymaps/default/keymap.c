@@ -1,4 +1,3 @@
-#include QMK_KEYBOARD_H
 #include <print.h>
 #include <shortcuts.h>
 
@@ -138,6 +137,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 
 };
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case _MQ_T:
+        case _MC_B:
+        case _MQ_Y:
+        case _MC_J:
+        case _MQ_G:
+        case _MC_G:
+        case _MQ_H:
+        case _MC_M:
+        case _MQ_B:
+        case _MC_V:
+        case _MQ_N:
+        case _MC_K:
+            return 140;
+            break;
+
+        default:
+            return TAPPING_TERM;
+            break;
+    }
+}
 
 bool custom_tap_hold(keyrecord_t *record, uint16_t keycode){
     if (!record -> tap.count && record -> event.pressed) {
