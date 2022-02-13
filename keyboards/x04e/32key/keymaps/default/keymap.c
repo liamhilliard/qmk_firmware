@@ -11,54 +11,98 @@ enum layers {
     LAYER_ADJUST
 };
 
+
 enum keycodes {
     QWERTY = SAFE_RANGE,
     COLEMAK
 };
 
-/* Custom QWERTY mods */
-#define _MQ_A    LT(LAYER_SYMBOL, _A) // Layer keys
-#define _MQ_SCN  LT(LAYER_SYMBOL, _SCN)
-#define _MQ_Z    LT(LAYER_NUMBER, _Z)
-#define _MQ_SL   LT(LAYER_NUMBER, _SL)
-#define _MQ_Q    LALT_T(_Q) // Home row mods
+
+/* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ───────
+ * _MQ_Q,  _MQ_W,  _MQ_E,  _MQ_R,  _MQ_T,  _MQ_Y,  _MQ_U,  _MQ_I,  _MQ_O,  _MQ_P,
+ * _MQ_A,  _MQ_S,  _MQ_D,  _MQ_F,  _MQ_G,  _MQ_H,  _MQ_J,  _MQ_K,  _MQ_L,  _MQ_SCN,
+ * _MQ_Z,  _MQ_X,  _MQ_C,  _MQ_V,  _MQ_B,  _MQ_N,  _MQ_M,  _MQ_COM,_MQ_DOT,_MQ_SL,
+ *
+ * Custom QWERTY codes */
+#define _MQ_Q    LALT_T(_Q)
+#define _MQ_W    _W
+#define _MQ_E    _E
+#define _MQ_R    _R
+#define _MQ_T    LT(LAYER_QWERTY, KC_T)
+#define _MQ_Y    LT(LAYER_QWERTY, KC_Y)
+#define _MQ_U    _U
+#define _MQ_I    _I
+#define _MQ_O    _O
+#define _MQ_P    LALT_T(_P)
+/* --- */
+#define _MQ_A    LT(LAYER_SYMBOL, _A)
 #define _MQ_S    LGUI_T(_S)
 #define _MQ_D    LCTL_T(_D)
 #define _MQ_F    LSFT_T(_F)
+#define _MQ_G    LT(LAYER_QWERTY, KC_G)
+#define _MQ_H    LT(LAYER_QWERTY, KC_H)
 #define _MQ_J    LSFT_T(_J)
 #define _MQ_K    LCTL_T(_K)
 #define _MQ_L    LGUI_T(_L)
-#define _MQ_P    LALT_T(_P)
-#define _MQ_T    LT(0, KC_T) // Custom tap-hold keys
-#define _MQ_Y    LT(0, KC_Y)
-#define _MQ_G    LT(0, KC_G)
-#define _MQ_H    LT(0, KC_H)
-#define _MQ_B    LT(0, KC_B)
-#define _MQ_N    LT(0, KC_N)
-/* Custom COLEMAK DH mods */
-#define _MC_A   LT(LAYER_SYMBOL, _A) // Layer keys
-#define _MC_O   LT(LAYER_SYMBOL, _O)
-#define _MC_Z   LT(LAYER_NUMBER, _Z)
-#define _MC_SL  LT(LAYER_NUMBER, _SL)
-#define _MC_Q   LALT_T(_Q) // Home row mods
+#define _MQ_SCN  LT(LAYER_SYMBOL, _SCN)
+/* --- */
+#define _MQ_Z    LT(LAYER_NUMBER, _Z)
+#define _MQ_X    _X
+#define _MQ_C    _C
+#define _MQ_V    _V
+#define _MQ_B    LT(LAYER_QWERTY, KC_B)
+#define _MQ_N    LT(LAYER_QWERTY, KC_N)
+#define _MQ_M    _M
+#define _MQ_COM  _COM
+#define _MQ_DOT  _DOT
+#define _MQ_SL   LT(LAYER_NUMBER, _SL)
+
+
+/* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ───────
+ * _MC_Q,  _MC_W,  _MC_F,  _MC_P,  _MC_B,  _MC_J,  _MC_L,  _MC_U,  _MC_Y,  _MC_SCN,
+ * _MC_A,  _MC_R,  _MC_S,  _MC_T,  _MC_G,  _MC_M,  _MC_N,  _MC_E,  _MC_I,  _MC_O,
+ * _MC_Z,  _MC_X,  _MC_C,  _MC_D,  _MC_V,  _MC_K,  _MC_H,  _MC_COM,_MC_DOT,_MC_SL,
+ *
+ * Custom COLEMAK DH codes */
+#define _MC_Q   LALT_T(_Q)
+#define _MC_W   _W
+#define _MC_F   _F
+#define _MC_P   _P
+#define _MC_B   LT(LAYER_COLEMAK_DH, KC_B)
+#define _MC_J   LT(LAYER_COLEMAK_DH, KC_J)
+#define _MC_L   _L
+#define _MC_U   _U
+#define _MC_Y   _Y
+#define _MC_SCN LALT_T(_SCN)
+/* --- */
+#define _MC_A   LT(LAYER_SYMBOL, _A)
 #define _MC_R   LGUI_T(_R)
 #define _MC_S   LCTL_T(_S)
 #define _MC_T   LSFT_T(_T)
+#define _MC_G   LT(LAYER_COLEMAK_DH, KC_G)
+#define _MC_M   LT(LAYER_COLEMAK_DH, KC_M)
 #define _MC_N   LSFT_T(_N)
 #define _MC_E   LCTL_T(_E)
 #define _MC_I   LGUI_T(_I)
-#define _MC_SCN LALT_T(_SCN)
-#define _MC_B   LT(1, KC_B) // Custom tap-hold keys
-#define _MC_J   LT(1, KC_J)
-#define _MC_G   LT(1, KC_G)
-#define _MC_M   LT(1, KC_M)
-#define _MC_V   LT(1, KC_V)
-#define _MC_K   LT(1, KC_K)
+#define _MC_O   LT(LAYER_SYMBOL, _O)
+/* --- */
+#define _MC_Z   LT(LAYER_NUMBER, _Z)
+#define _MC_X   _X
+#define _MC_C   _C
+#define _MC_D   _D
+#define _MC_V   LT(LAYER_COLEMAK_DH, KC_V)
+#define _MC_K   LT(LAYER_COLEMAK_DH, KC_K)
+#define _MC_H   _H
+#define _MC_COM _COM
+#define _MC_DOT _DOT
+#define _MC_SL  LT(LAYER_NUMBER, _SL)
+
 
 #define SYMBOL MO(LAYER_SYMBOL)
 #define NUMBER MO(LAYER_NUMBER)
 #define ADJUST MO(LAYER_ADJUST)
 #define GAMING DF(LAYER_GAMING) /* GAMING layer shouldn't be set persistently */
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -69,9 +113,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         Z       X       C       V       B      │N       M       ,<      .>      /?
                                 SYMBOL  SPACE  │SHIFT   NUMBER
         ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
-        _MQ_Q,  _W,     _E,     _R,     _MQ_T,  _MQ_Y,  _U,     _I,     _O,     _MQ_P,  \
-        _MQ_A,  _MQ_S,  _MQ_D,  _MQ_F,  _MQ_G,  _MQ_H,  _MQ_J,  _MQ_K,  _MQ_L,  _MQ_SCN,\
-        _MQ_Z,  _X,     _C,     _V,     _MQ_B,  _MQ_N,  _M,     _COM,   _DOT,   _MQ_SL, \
+        _MQ_Q,  _MQ_W,  _MQ_E,  _MQ_R,  _MQ_T,  _MQ_Y,  _MQ_U,  _MQ_I,  _MQ_O,  _MQ_P,
+        _MQ_A,  _MQ_S,  _MQ_D,  _MQ_F,  _MQ_G,  _MQ_H,  _MQ_J,  _MQ_K,  _MQ_L,  _MQ_SCN,
+        _MQ_Z,  _MQ_X,  _MQ_C,  _MQ_V,  _MQ_B,  _MQ_N,  _MQ_M,  _MQ_COM,_MQ_DOT,_MQ_SL,
                                         _SPC,   _SFT                                    \
     ),
 
@@ -82,9 +126,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         Z       X       C       D       V      │K       H       ,<      .>      /?
                                 SYMBOL  SPACE  │SHIFT   NUMBER
         ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
-        _MC_Q,  _W,     _F,     _P,     _MC_B,  _MC_J,  _L,     _U,     _Y,     _MC_SCN,\
-        _MC_A,  _MC_R,  _MC_S,  _MC_T,  _MC_G,  _MC_M,  _MC_N,  _MC_E,  _MC_I,  _MC_O,  \
-        _MC_Z,  _X,     _C,     _D,     _MC_V,  _MC_K,  _H,     _COM,   _DOT,   _MC_SL, \
+        _MC_Q,  _MC_W,  _MC_F,  _MC_P,  _MC_B,  _MC_J,  _MC_L,  _MC_U,  _MC_Y,  _MC_SCN,
+        _MC_A,  _MC_R,  _MC_S,  _MC_T,  _MC_G,  _MC_M,  _MC_N,  _MC_E,  _MC_I,  _MC_O,
+        _MC_Z,  _MC_X,  _MC_C,  _MC_D,  _MC_V,  _MC_K,  _MC_H,  _MC_COM,_MC_DOT,_MC_SL,
                                         _SPC,   _SFT                                    \
     ),
 
@@ -95,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 TRNS    ___    │___     ADJUST
         ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
         xxx,    _BTK,   _PIP,   _UND,   _LSB,   _RSB,   _PLS,   _AMP,   _AT,    xxx,    \
-        TRNS,   _CEN,   _SQT,   _MIN,   _LPR,   _RPR,   _DQT,   _USD,   _EX,    TRNS,   \
+        TRNS,   _PRC,   _SQT,   _MIN,   _LPR,   _RPR,   _DQT,   _USD,   _EX,    TRNS,   \
         ADJUST, _CRT,   _BSL,   _TLD,   _LCB,   _RCB,   _EQ,    _AST,   _HSH,   ADJUST, \
                                         ___,    ___                                     \
     ),
