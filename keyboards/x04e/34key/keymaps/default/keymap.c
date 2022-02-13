@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 TRNS    ___    │___     ADJUST
         ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
         _BTK,   _PIP,   _UND,   _LSB,   _TAB,   _DEL,   _RSB,   _PLS,   _AMP,   _AT,    \
-        _CEN,   _SQT,   _MIN,   _LPR,   _ESC,   _BSPC,  _RPR,   _DQT,   _USD,   _EX,    \
+        _PRC,   _SQT,   _MIN,   _LPR,   _ESC,   _BSPC,  _RPR,   _DQT,   _USD,   _EX,    \
         _CRT,   _BSL,   _TLD,   _LCB,   _EUR,   _ENT,   _RCB,   _EQ,    _AST,   _HSH,   \
                                 TRNS,   ___,    ___,    ADJUST                          \
     ),

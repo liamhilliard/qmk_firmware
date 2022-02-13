@@ -121,7 +121,7 @@
 #define _DOT        KC_DOT  //          . >
 #define _SL         KC_SLSH //          / ?
 #define _GBP        LSFT(KC_3) //       £
-#define _CEN        LSFT(KC_5) //       %
+#define _PRC        LSFT(KC_5) //       %
 #define _EUR        RALT(KC_4) //       €
 #define _BTK        KC_GRV //           `
 #define _QS         LSFT(KC_SLSH) //    ?
