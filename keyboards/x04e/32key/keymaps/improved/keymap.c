@@ -29,36 +29,20 @@ enum keycodes {
  *
  * Custom QWERTY codes */
 #define _MQ_Q    LALT_T(_Q)
-#define _MQ_W    _W
 #define _MQ_E    LT(LAYER_RIGHT_ARROW, _E)
-#define _MQ_R    _R
-#define _MQ_T    _T
-#define _MQ_Y    _Y
-#define _MQ_U    _U
 #define _MQ_I    LT(LAYER_LEFT_ARROW, _I)
-#define _MQ_O    _O
 #define _MQ_P    LALT_T(_P)
 /* --- */
 #define _MQ_A    LCTL_T(_A)
 #define _MQ_S    LSFT_T(_S)
 #define _MQ_D    LT(LAYER_RIGHT_SYMBOL, _D)
-#define _MQ_F    _F
-#define _MQ_G    _G
-#define _MQ_H    _H
-#define _MQ_J    _J
 #define _MQ_K    LT(LAYER_LEFT_SYMBOL, _K)
 #define _MQ_L    LSFT_T(_L)
 #define _MQ_SCN  LCTL_T(_SCN)
 /* --- */
 #define _MQ_Z    LGUI_T(_Z)
-#define _MQ_X    _X
 #define _MQ_C    LT(LAYER_RIGHT_NUMBER, _C)
-#define _MQ_V    _V
-#define _MQ_B    _B
-#define _MQ_N    _N
-#define _MQ_M    _M
 #define _MQ_COM  LT(LAYER_LEFT_NUMBER, _COM)
-#define _MQ_DOT  _DOT
 #define _MQ_SL   LGUI_T(_SL)
 
 
@@ -69,65 +53,55 @@ enum keycodes {
  *
  * Custom COLEMAK DH codes */
 #define _MC_Q   LALT_T(_Q)
-#define _MC_W   _W
 #define _MC_F   LT(LAYER_RIGHT_ARROW, _F)
-#define _MC_P   _P
-#define _MC_B   _B
-#define _MC_J   _J
-#define _MC_L   _L
 #define _MC_U   LT(LAYER_LEFT_ARROW, _U)
-#define _MC_Y   _Y
 #define _MC_SCN LALT_T(_SCN)
 /* --- */
 #define _MC_A   LCTL_T(_A)
 #define _MC_R   LSFT_T(_R)
 #define _MC_S   LT(LAYER_RIGHT_SYMBOL, _S)
-#define _MC_T   _T
-#define _MC_G   _G
-#define _MC_M   _M
-#define _MC_N   _N
 #define _MC_E   LT(LAYER_LEFT_SYMBOL, _E)
 #define _MC_I   LSFT_T(_I)
 #define _MC_O   LCTL_T(_O)
 /* --- */
 #define _MC_Z   LGUI_T(_Z)
-#define _MC_X   _X
 #define _MC_C   LT(LAYER_RIGHT_NUMBER, _C)
-#define _MC_D   _D
-#define _MC_V   _V
-#define _MC_K   _K
-#define _MC_H   _H
 #define _MC_COM LT(LAYER_LEFT_NUMBER, _COM)
-#define _MC_DOT _DOT
 #define _MC_SL  LGUI_T(_SL)
 
+// TODO: Fix CAPS word
+// TODO: Move mods to home row
+// TODO: Create adjust layer for changing keymaps/resetting?
 
-#define LSYM   MO(LAYER_LEFT_SYMBOL)
-#define RSYM   MO(LAYER_RIGHT_SYMBOL)
-#define LNUM   MO(LAYER_LEFT_NUMBER)
-#define RNUM   MO(LAYER_RIGHT_NUMBER)
-#define LARR   MO(LAYER_LEFT_ARROW)
-#define RARR   MO(LAYER_RIGHT_ARROW)
-#define GAMING DF(LAYER_GAMING) /* GAMING layer shouldn't be set persistently */
+#define LSYM    MO(LAYER_LEFT_SYMBOL)
+#define RSYM    MO(LAYER_RIGHT_SYMBOL)
+#define LNUM    MO(LAYER_LEFT_NUMBER)
+#define RNUM    MO(LAYER_RIGHT_NUMBER)
+#define LARR    MO(LAYER_LEFT_ARROW)
+#define RARR    MO(LAYER_RIGHT_ARROW)
+#define GAMING  DF(LAYER_GAMING) /* GAMING layer shouldn't be set persistently */
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_QWERTY] = LAYOUT( \
-        _MQ_Q,  _MQ_W,  _MQ_E,  _MQ_R,  _MQ_T,  _MQ_Y,  _MQ_U,  _MQ_I,  _MQ_O,  _MQ_P,  \
-        _MQ_A,  _MQ_S,  _MQ_D,  _MQ_F,  _MQ_G,  _MQ_H,  _MQ_J,  _MQ_K,  _MQ_L,  _MQ_SCN,\
-        _MQ_Z,  _MQ_X,  _MQ_C,  _MQ_V,  _MQ_B,  _MQ_N,  _MQ_M,  _MQ_COM,_MQ_DOT,_MQ_SL, \
+     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
+        _MQ_Q,  _W,     _MQ_E,  _R,     _T,     _Y,     _U,     _MQ_I,  _O,     _MQ_P,  \
+        _MQ_A,  _MQ_S,  _MQ_D,  _F,     _G,     _H,     _J,     _MQ_K,  _MQ_L,  _MQ_SCN,\
+        _MQ_Z,  _X,     _MQ_C,  _V,     _B,     _N,     _M,     _MQ_COM,_DOT,   _MQ_SL, \
                                         _SPC,   _BSPC                                   \
     ),
 
     [LAYER_COLEMAK_DH] = LAYOUT( \
-        _MC_Q,  _MC_W,  _MC_F,  _MC_P,  _MC_B,  _MC_J,  _MC_L,  _MC_U,  _MC_Y,  _MC_SCN,\
-        _MC_A,  _MC_R,  _MC_S,  _MC_T,  _MC_G,  _MC_M,  _MC_N,  _MC_E,  _MC_I,  _MC_O,  \
-        _MC_Z,  _MC_X,  _MC_C,  _MC_D,  _MC_V,  _MC_K,  _MC_H,  _MC_COM,_MC_DOT,_MC_SL, \
+     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
+        _MC_Q,  _W,     _MC_F,  _P,     _B,     _J,     _L,     _MC_U,  _Y,     _MC_SCN,\
+        _MC_A,  _MC_R,  _MC_S,  _T,     _G,     _M,     _N,     _MC_E,  _MC_I,  _MC_O,  \
+        _MC_Z,  _X,     _MC_C,  _D,     _V,     _K,     _H,     _MC_COM,_DOT,   _SL,    \
                                         _SPC,   _BSPC                                   \
     ),
 
     [LAYER_LEFT_SYMBOL] = LAYOUT( \
+     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
         _GBP,   _BTK,   _PIP,   _UND,   _LSB,   _DEL,   _TAB,   xxx,    xxx,    xxx,    \
         xxx,    _PRC,   _SQT,   _MIN,   _LPR,   _UPPR,  _ESC,   TRNS,   xxx,    xxx,    \
         _EUR,   _CRT,   _BSL,   _TLD,   _LCB,   xxx,    _ENT,   xxx,    xxx,    xxx,    \
@@ -135,6 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [LAYER_RIGHT_SYMBOL] = LAYOUT( \
+     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    _TAB,   _DEL,   _RSB,   _PLS,   _AMP,   _LAB,   _RAB,   \
         xxx,    xxx,    TRNS,   _ESC,   _UPPR,  _RPR,   _DQT,   _USD,   _EX,    xxx,    \
         xxx,    xxx,    xxx,    _ENT,   xxx,    _RCB,   _EQ,    _AST,   _HSH,   _AT,    \
@@ -142,34 +117,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [LAYER_LEFT_NUMBER] = LAYOUT( \
+     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
         xxx,    _7,     _8,     _9,     xxx,    _DEL,   _TAB,   xxx,    xxx,    xxx,    \
-        _0,     _4,     _5,     _6,     xxx,    _UPPR,  _ESC,   TRNS,   xxx,    xxx,    \
-        xxx,    _1,     _2,     _3,     xxx,    xxx,    _ENT,   xxx,    xxx,    xxx,    \
+        _0,     _4,     _5,     _6,     xxx,    _UPPR,  _ESC,   xxx,    xxx,    xxx,    \
+        xxx,    _1,     _2,     _3,     xxx,    xxx,    _ENT,   TRNS,   xxx,    xxx,    \
                                         ___,    ___                                     \
     ),
 
     [LAYER_RIGHT_NUMBER] = LAYOUT( \
+     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    _TAB,   _DEL,   xxx,    _7,     _8,     _9,     xxx,    \
-        xxx,    xxx,    TRNS,   _ESC,   _UPPR,  xxx,    _4,     _5,     _6,     _0,     \
-        xxx,    xxx,    xxx,    _ENT,   xxx,    xxx,    _1,     _2,     _3,     xxx,    \
+        xxx,    xxx,    xxx,    _ESC,   _UPPR,  xxx,    _4,     _5,     _6,     _0,     \
+        xxx,    xxx,    TRNS,   _ENT,   xxx,    xxx,    _1,     _2,     _3,     xxx,    \
                                         ___,    ___                                     \
     ),
 
     [LAYER_LEFT_ARROW] = LAYOUT( \
-        _F1,    _F2,    _F3,    _F4,    _F5,    _DEL,   _TAB,   QWERTY, COLEMAK,GAMING, \
+     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
+        _F1,    _F2,    _F3,    _F4,    _F5,    _DEL,   _TAB,   TRNS,   QWERTY, COLEMAK \
         _AR_L,  _AR_D,  _AR_U,  _AR_R,  _F12,   _UPPR,  _ESC,   _V_P,   _V_VD,  _V_VU,  \
-        _HOME,  _PG_D,  _PG_U,  _END,   xxx,    xxx,    _ENT,   TRNS,   xxx,    RESET,  \
+        _HOME,  _PG_D,  _PG_U,  _END,   xxx,    xxx,    _ENT,   GAMING, xxx,    RESET,  \
                                         ___,    ___                                     \
     ),
 
     [LAYER_RIGHT_ARROW] = LAYOUT( \
-        QWERTY, COLEMAK,GAMING, _TAB,   _DEL,   _F6,    _F7,    _F8,    _F9,    _F10,   \
+     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
+        COLEMAK,QWERTY, TRNS,   _TAB,   _DEL,   _F6,    _F7,    _F8,    _F9,    _F10,   \
         _V_P,   _V_VD,  _V_VU,  _ESC,   _UPPR,  _F12,   _AR_L,  _AR_D,  _AR_U,  _AR_R,  \
-        RESET,  xxx,    TRNS,   _ENT,   xxx,    xxx,    _HOME,  _PG_D,  _PG_U,  _END,   \
+        RESET,  xxx,    GAMING, _ENT,   xxx,    xxx,    _HOME,  _PG_D,  _PG_U,  _END,   \
                                         ___,    ___                                     \
     ),
 
     [LAYER_GAMING] = LAYOUT( \
+     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
         _TAB,   _Q,     _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,     \
         _ESC,   _A,     _S,     _D,     _F,     _G,     _H,     _J,     _K,     QWERTY, \
         _CTL,   _Z,     _X,     _C,     _V,     _B,     _N,     _M,     _COM,   COLEMAK,\
@@ -181,13 +161,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case _MQ_E:   case _MC_F:
-        case _MQ_D:   case _MC_S:
         case _MQ_C:   /*case _MC_C:*/
         case _MQ_I:   case _MC_U:
-        case _MQ_K:   case _MC_E:
         case _MQ_COM: /*case _MC_COM:*/
-            return 160;
+            return 180;
             break;
+
+        /* Important symbol layer keys get short tapping term */
+        case _MQ_D:   case _MC_S:
+        case _MQ_K:   case _MC_E:
+            return 120;
 
         default:
             return TAPPING_TERM;
@@ -244,7 +227,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         /* Don't disable capslock when symbol keys are held for layers/mods */
         case LCTL_T(_SCN):
-        case LT(LAYER_LEFT_NUMBER, _COM):
+        case _MQ_COM: /* same as _MC_COM */
         case LGUI_T(_SL):
             if(caps_on && record->tap.count && record->event.pressed){
                 toggle_capslock();
