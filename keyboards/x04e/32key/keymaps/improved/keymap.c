@@ -22,52 +22,44 @@ enum keycodes {
 };
 
 
-/* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ───────
- * _MQ_Q,  _MQ_W,  _MQ_E,  _MQ_R,  _MQ_T,  _MQ_Y,  _MQ_U,  _MQ_I,  _MQ_O,  _MQ_P,
- * _MQ_A,  _MQ_S,  _MQ_D,  _MQ_F,  _MQ_G,  _MQ_H,  _MQ_J,  _MQ_K,  _MQ_L,  _MQ_SCN,
- * _MQ_Z,  _MQ_X,  _MQ_C,  _MQ_V,  _MQ_B,  _MQ_N,  _MQ_M,  _MQ_COM,_MQ_DOT,_MQ_SL,
+/* Q* W  E  R  T  Y  U  I  O  P
+ * A  S  D  F  G  H  J  K  L  ;
+ * Z  X  C  V  B  N  M  ,  .  /
  *
  * Custom QWERTY codes */
-#define _MQ_Q    LALT_T(_Q)
-#define _MQ_E    LT(LAYER_RIGHT_ARROW, _E)
-#define _MQ_I    LT(LAYER_LEFT_ARROW, _I)
-#define _MQ_P    LALT_T(_P)
+#define _Q_LALT    LALT_T(_Q)
+#define _E_LARR    LT(LAYER_LEFT_ARROW, _E)
+#define _I_RARR    LT(LAYER_RIGHT_ARROW, _I)
+#define _P_RALT    RALT_T(_P)
 /* --- */
-#define _MQ_A    LCTL_T(_A)
-#define _MQ_S    LSFT_T(_S)
-#define _MQ_D    LT(LAYER_RIGHT_SYMBOL, _D)
-#define _MQ_K    LT(LAYER_LEFT_SYMBOL, _K)
-#define _MQ_L    LSFT_T(_L)
-#define _MQ_SCN  LCTL_T(_SCN)
+#define _A_LCTL    LCTL_T(_A)
+#define _S_LSFT    LSFT_T(_S)
+#define _D_LSYM    LT(LAYER_LEFT_SYMBOL, _D)
+#define _K_RSYM    LT(LAYER_RIGHT_SYMBOL, _K)
+#define _L_RSFT    RSFT_T(_L)
+#define _SCN_RCTL  RCTL_T(_SCN)
 /* --- */
-#define _MQ_Z    LGUI_T(_Z)
-#define _MQ_C    LT(LAYER_RIGHT_NUMBER, _C)
-#define _MQ_COM  LT(LAYER_LEFT_NUMBER, _COM)
-#define _MQ_SL   LGUI_T(_SL)
+#define _Z_LGUI    LGUI_T(_Z)
+#define _C_LNUM    LT(LAYER_LEFT_NUMBER, _C)
+#define _COM_RNUM  LT(LAYER_RIGHT_NUMBER, _COM)
+#define _SL_RGUI   LGUI_T(_SL) // RGUI is a "multikey"
 
 
-/* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ───────
- * _MC_Q,  _MC_W,  _MC_F,  _MC_P,  _MC_B,  _MC_J,  _MC_L,  _MC_U,  _MC_Y,  _MC_SCN,
- * _MC_A,  _MC_R,  _MC_S,  _MC_T,  _MC_G,  _MC_M,  _MC_N,  _MC_E,  _MC_I,  _MC_O,
- * _MC_Z,  _MC_X,  _MC_C,  _MC_D,  _MC_V,  _MC_K,  _MC_H,  _MC_COM,_MC_DOT,_MC_SL,
+/* Q  W  F  P  B  J  L  U  Y  ;
+ * A  R  S  T  G  M  N  E  I  O
+ * Z  X  C  D  V  K  H  ,  .  /
  *
  * Custom COLEMAK DH codes */
-#define _MC_Q   LALT_T(_Q)
-#define _MC_F   LT(LAYER_RIGHT_ARROW, _F)
-#define _MC_U   LT(LAYER_LEFT_ARROW, _U)
-#define _MC_SCN LALT_T(_SCN)
 /* --- */
-#define _MC_A   LCTL_T(_A)
-#define _MC_R   LSFT_T(_R)
-#define _MC_S   LT(LAYER_RIGHT_SYMBOL, _S)
-#define _MC_E   LT(LAYER_LEFT_SYMBOL, _E)
-#define _MC_I   LSFT_T(_I)
-#define _MC_O   LCTL_T(_O)
+#define _SCN_RALT RALT_T(_SCN)
+#define _F_LARR   LT(LAYER_LEFT_ARROW, _F)
+#define _U_RARR   LT(LAYER_RIGHT_ARROW, _U)
+#define _R_LSFT   LSFT_T(_R)
+#define _S_LSYM   LT(LAYER_LEFT_SYMBOL, _S)
+#define _E_RSYM   LT(LAYER_RIGHT_SYMBOL, _E)
+#define _I_RSFT   RSFT_T(_I)
+#define _O_RCTL   RCTL_T(_O)
 /* --- */
-#define _MC_Z   LGUI_T(_Z)
-#define _MC_C   LT(LAYER_RIGHT_NUMBER, _C)
-#define _MC_COM LT(LAYER_LEFT_NUMBER, _COM)
-#define _MC_SL  LGUI_T(_SL)
 
 // TODO: Fix CAPS word
 // TODO: Move mods to home row
@@ -85,30 +77,22 @@ enum keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_QWERTY] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
-        _MQ_Q,  _W,     _MQ_E,  _R,     _T,     _Y,     _U,     _MQ_I,  _O,     _MQ_P,  \
-        _MQ_A,  _MQ_S,  _MQ_D,  _F,     _G,     _H,     _J,     _MQ_K,  _MQ_L,  _MQ_SCN,\
-        _MQ_Z,  _X,     _MQ_C,  _V,     _B,     _N,     _M,     _MQ_COM,_DOT,   _MQ_SL, \
-                                        _SPC,   _BSPC                                   \
+     /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
+        _Q_LALT,   _W,        _E_LARR,   _R,        _T,        _Y,        _U,        _I_RARR,   _O,        _P_RALT,   \
+        _A_LCTL,   _S_LSFT,   _D_LSYM,   _F,        _G,        _H,        _J,        _K_RSYM,   _L_RSFT,   _SCN_RCTL, \
+        _Z_LGUI,   _X,        _C_LNUM,   _V,        _B,        _N,        _M,        _COM_RNUM, _DOT,      _SL_RGUI,  \
+                                                    _SPC,      _BSPC                                                  \
     ),
 
     [LAYER_COLEMAK_DH] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
-        _MC_Q,  _W,     _MC_F,  _P,     _B,     _J,     _L,     _MC_U,  _Y,     _MC_SCN,\
-        _MC_A,  _MC_R,  _MC_S,  _T,     _G,     _M,     _N,     _MC_E,  _MC_I,  _MC_O,  \
-        _MC_Z,  _X,     _MC_C,  _D,     _V,     _K,     _H,     _MC_COM,_DOT,   _SL,    \
-                                        _SPC,   _BSPC                                   \
+     /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
+        _Q_LALT,   _W,        _F_LARR,   _P,        _B,        _J,        _L,        _U_RARR,   _Y,        _SCN_RALT, \
+        _A_LCTL,   _R_LSFT,   _S_LSYM,   _T,        _G,        _M,        _N,        _E_RSYM,   _I_RSFT,   _O_RCTL,   \
+        _Z_LGUI,   _X,        _C_LNUM,   _D,        _V,        _K,        _H,        _COM_RNUM, _DOT,      _SL_RGUI,  \
+                                                    _SPC,      _BSPC                                                  \
     ),
 
     [LAYER_LEFT_SYMBOL] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
-        _GBP,   _BTK,   _PIP,   _UND,   _LSB,   _DEL,   _TAB,   xxx,    xxx,    xxx,    \
-        xxx,    _PRC,   _SQT,   _MIN,   _LPR,   _UPPR,  _ESC,   TRNS,   xxx,    xxx,    \
-        _EUR,   _CRT,   _BSL,   _TLD,   _LCB,   xxx,    _ENT,   xxx,    xxx,    xxx,    \
-                                        ___,    ___                                     \
-    ),
-
-    [LAYER_RIGHT_SYMBOL] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    _TAB,   _DEL,   _RSB,   _PLS,   _AMP,   _LAB,   _RAB,   \
         xxx,    xxx,    TRNS,   _ESC,   _UPPR,  _RPR,   _DQT,   _USD,   _EX,    xxx,    \
@@ -116,15 +100,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         ___,    ___                                     \
     ),
 
-    [LAYER_LEFT_NUMBER] = LAYOUT( \
+    [LAYER_RIGHT_SYMBOL] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
-        xxx,    _7,     _8,     _9,     xxx,    _DEL,   _TAB,   xxx,    xxx,    xxx,    \
-        _0,     _4,     _5,     _6,     xxx,    _UPPR,  _ESC,   xxx,    xxx,    xxx,    \
-        xxx,    _1,     _2,     _3,     xxx,    xxx,    _ENT,   TRNS,   xxx,    xxx,    \
+        _GBP,   _BTK,   _PIP,   _UND,   _LSB,   _DEL,   _TAB,   xxx,    xxx,    xxx,    \
+        xxx,    _PRC,   _SQT,   _MIN,   _LPR,   _UPPR,  _ESC,   TRNS,   xxx,    xxx,    \
+        _EUR,   _CRT,   _BSL,   _TLD,   _LCB,   xxx,    _ENT,   xxx,    xxx,    xxx,    \
                                         ___,    ___                                     \
     ),
 
-    [LAYER_RIGHT_NUMBER] = LAYOUT( \
+    [LAYER_LEFT_NUMBER] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    _TAB,   _DEL,   xxx,    _7,     _8,     _9,     xxx,    \
         xxx,    xxx,    xxx,    _ESC,   _UPPR,  xxx,    _4,     _5,     _6,     _0,     \
@@ -132,19 +116,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         ___,    ___                                     \
     ),
 
+    [LAYER_RIGHT_NUMBER] = LAYOUT( \
+     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
+        xxx,    _7,     _8,     _9,     xxx,    _DEL,   _TAB,   xxx,    xxx,    xxx,    \
+        _0,     _4,     _5,     _6,     xxx,    _UPPR,  _ESC,   xxx,    xxx,    xxx,    \
+        xxx,    _1,     _2,     _3,     xxx,    xxx,    _ENT,   TRNS,   xxx,    xxx,    \
+                                        ___,    ___                                     \
+    ),
+
     [LAYER_LEFT_ARROW] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
-        _F1,    _F2,    _F3,    _F4,    _F5,    _DEL,   _TAB,   TRNS,   QWERTY, COLEMAK \
-        _AR_L,  _AR_D,  _AR_U,  _AR_R,  _F12,   _UPPR,  _ESC,   _V_P,   _V_VD,  _V_VU,  \
-        _HOME,  _PG_D,  _PG_U,  _END,   xxx,    xxx,    _ENT,   GAMING, xxx,    RESET,  \
+        COLEMAK,QWERTY, TRNS,   _TAB,   _DEL,   _F6,    _F7,    _F8,    _F9,    _F10,   \
+        _V_P,   _V_VD,  _V_VU,  _ESC,   _UPPR,  _F12,   _AR_L,  _AR_D,  _AR_U,  _AR_R,  \
+        RESET,  xxx,    GAMING, _ENT,   xxx,    xxx,    _HOME,  _PG_D,  _PG_U,  _END,   \
                                         ___,    ___                                     \
     ),
 
     [LAYER_RIGHT_ARROW] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
-        COLEMAK,QWERTY, TRNS,   _TAB,   _DEL,   _F6,    _F7,    _F8,    _F9,    _F10,   \
-        _V_P,   _V_VD,  _V_VU,  _ESC,   _UPPR,  _F12,   _AR_L,  _AR_D,  _AR_U,  _AR_R,  \
-        RESET,  xxx,    GAMING, _ENT,   xxx,    xxx,    _HOME,  _PG_D,  _PG_U,  _END,   \
+        _F1,    _F2,    _F3,    _F4,    _F5,    _DEL,   _TAB,   TRNS,   QWERTY, COLEMAK,\
+        _AR_L,  _AR_D,  _AR_U,  _AR_R,  _F12,   _UPPR,  _ESC,   _V_P,   _V_VD,  _V_VU,  \
+        _HOME,  _PG_D,  _PG_U,  _END,   xxx,    xxx,    _ENT,   GAMING, xxx,    RESET,  \
                                         ___,    ___                                     \
     ),
 
@@ -160,16 +152,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case _MQ_E:   case _MC_F:
-        case _MQ_C:   /*case _MC_C:*/
-        case _MQ_I:   case _MC_U:
-        case _MQ_COM: /*case _MC_COM:*/
+        case _E_LARR:   case _F_LARR:
+        case _C_LNUM:   case _I_RARR:
+        case _U_RARR:   case _COM_RNUM:
             return 180;
             break;
 
         /* Important symbol layer keys get short tapping term */
-        case _MQ_D:   case _MC_S:
-        case _MQ_K:   case _MC_E:
+        case _D_LSYM:   case _S_LSYM:
+        case _K_RSYM:   case _E_RSYM:
             return 120;
 
         default:
@@ -207,28 +198,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return true;
 
         /* Keep capslock on for the following keys */
-        case LALT_T(_Q): case LALT_T(_P): case LCTL_T(_A):
-        case LCTL_T(_O): case LSFT_T(_S): case LSFT_T(_L):
-        case LSFT_T(_R): case LSFT_T(_I): case LGUI_T(_Z):
-        case LT(LAYER_RIGHT_ARROW, _E): case LT(LAYER_RIGHT_ARROW, _F):
-        case LT(LAYER_LEFT_ARROW, _I): case LT(LAYER_LEFT_ARROW, _U):
-        case LT(LAYER_RIGHT_SYMBOL, _D): case LT(LAYER_LEFT_SYMBOL, _K):
-        case LT(LAYER_RIGHT_NUMBER, _C): case LT(LAYER_RIGHT_SYMBOL, _S):
-        case LT(LAYER_LEFT_SYMBOL, _E):
+
+        case _Q_LALT:
+        case _E_LARR:
+        case _I_RARR:
+        case _P_RALT:
+        case _A_LCTL:
+        case _S_LSFT:
+        case _D_LSYM:
+        case _K_RSYM:
+        case _L_RSFT:
+        case _Z_LGUI:
+        case _C_LNUM:
+        case _F_LARR:
+        case _U_RARR:
+        case _R_LSFT:
+        case _S_LSYM:
+        case _E_RSYM:
+        case _I_RSFT:
+        case _O_RCTL:
         case _A: case _B: case _C: case _D: case _E: case _F: case _G: case _H:
         case _I: case _J: case _K: case _L: case _M: case _N: case _O: case _P:
         case _Q: case _R: case _S: case _T: case _U: case _V: case _W: case _X:
         case _Y: case _Z:
+
         case _1: case _2: case _3: case _4: case _5: case _6: case _7: case _8:
         case _9: case _0:
+
         case _UND: case _MIN:
+
         case _BSPC:
             return true;
 
         /* Don't disable capslock when symbol keys are held for layers/mods */
-        case LCTL_T(_SCN):
-        case _MQ_COM: /* same as _MC_COM */
-        case LGUI_T(_SL):
+        case _SCN_RCTL:
+        case _COM_RNUM:
+        case _SCN_RALT:
+        case _SL_RGUI:
             if(caps_on && record->tap.count && record->event.pressed){
                 toggle_capslock();
             }
