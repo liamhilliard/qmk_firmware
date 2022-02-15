@@ -22,47 +22,48 @@ enum keycodes {
 };
 
 
-/* Q* W  E  R  T  Y  U  I  O  P
- * A  S  D  F  G  H  J  K  L  ;
- * Z  X  C  V  B  N  M  ,  .  /
- *
+/*
+ Q* W  E* R  T  Y  U  I* O  P*
+ A* S* D* F* G  H  J* K* L* ;*
+ Z  X  C* V  B  N  M  ,* .  /
+
  * Custom QWERTY codes */
 #define _Q_LALT    LALT_T(_Q)
 #define _E_LARR    LT(LAYER_LEFT_ARROW, _E)
 #define _I_RARR    LT(LAYER_RIGHT_ARROW, _I)
 #define _P_RALT    RALT_T(_P)
 /* --- */
-#define _A_LCTL    LCTL_T(_A)
-#define _S_LSFT    LSFT_T(_S)
+#define _A_LGUI    LGUI_T(_A)
+#define _S_LCTL    LCTL_T(_S)
 #define _D_LSYM    LT(LAYER_LEFT_SYMBOL, _D)
+#define _F_LSFT    LSFT_T(_F)
+#define _J_RSFT    RSFT_T(_J)
 #define _K_RSYM    LT(LAYER_RIGHT_SYMBOL, _K)
-#define _L_RSFT    RSFT_T(_L)
-#define _SCN_RCTL  RCTL_T(_SCN)
+#define _L_RCTL    RCTL_T(_L)
+#define _SCN_RGUI  LGUI_T(_SCN) // RGUI is MediaKey, so just use LGUI
 /* --- */
-#define _Z_LGUI    LGUI_T(_Z)
 #define _C_LNUM    LT(LAYER_LEFT_NUMBER, _C)
 #define _COM_RNUM  LT(LAYER_RIGHT_NUMBER, _COM)
-#define _SL_RGUI   LGUI_T(_SL) // RGUI is a "multikey"
 
 
-/* Q  W  F  P  B  J  L  U  Y  ;
- * A  R  S  T  G  M  N  E  I  O
- * Z  X  C  D  V  K  H  ,  .  /
- *
+/*
+ Q* W  F* P  B  J  L  U* Y  ;*
+ A* R* S* T* G  M  N* E* I* O*
+ Z  X  C* D  V  K  H  ,* .  /
+
  * Custom COLEMAK DH codes */
+#define _F_LARR    LT(LAYER_LEFT_ARROW, _F)
+#define _U_RARR    LT(LAYER_RIGHT_ARROW, _U)
+#define _SCN_RALT  RALT_T(_SCN)
 /* --- */
-#define _SCN_RALT RALT_T(_SCN)
-#define _F_LARR   LT(LAYER_LEFT_ARROW, _F)
-#define _U_RARR   LT(LAYER_RIGHT_ARROW, _U)
-#define _R_LSFT   LSFT_T(_R)
-#define _S_LSYM   LT(LAYER_LEFT_SYMBOL, _S)
-#define _E_RSYM   LT(LAYER_RIGHT_SYMBOL, _E)
-#define _I_RSFT   RSFT_T(_I)
-#define _O_RCTL   RCTL_T(_O)
-/* --- */
+#define _R_LCTL    LCTL_T(_R)
+#define _S_LSYM    LT(LAYER_LEFT_SYMBOL, _S)
+#define _T_LSFT    LSFT_T(_T)
+#define _N_RSFT    RSFT_T(_N)
+#define _E_RSYM    LT(LAYER_RIGHT_SYMBOL, _E)
+#define _I_RCTL    RCTL_T(_I)
+#define _O_LGUI    LGUI_T(_O)
 
-// TODO: Fix CAPS word
-// TODO: Move mods to home row
 // TODO: Create adjust layer for changing keymaps/resetting?
 
 #define LSYM    MO(LAYER_LEFT_SYMBOL)
@@ -79,16 +80,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LAYER_QWERTY] = LAYOUT( \
      /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
         _Q_LALT,   _W,        _E_LARR,   _R,        _T,        _Y,        _U,        _I_RARR,   _O,        _P_RALT,   \
-        _A_LCTL,   _S_LSFT,   _D_LSYM,   _F,        _G,        _H,        _J,        _K_RSYM,   _L_RSFT,   _SCN_RCTL, \
-        _Z_LGUI,   _X,        _C_LNUM,   _V,        _B,        _N,        _M,        _COM_RNUM, _DOT,      _SL_RGUI,  \
+        _A_LGUI,   _S_LCTL,   _D_LSYM,   _F_LSFT,   _G,        _H,        _J_RSFT,   _K_RSYM,   _L_RCTL,   _SCN_RGUI, \
+        _Z,        _X,        _C_LNUM,   _V,        _B,        _N,        _M,        _COM_RNUM, _DOT,      _SL,       \
                                                     _SPC,      _BSPC                                                  \
     ),
 
     [LAYER_COLEMAK_DH] = LAYOUT( \
      /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
         _Q_LALT,   _W,        _F_LARR,   _P,        _B,        _J,        _L,        _U_RARR,   _Y,        _SCN_RALT, \
-        _A_LCTL,   _R_LSFT,   _S_LSYM,   _T,        _G,        _M,        _N,        _E_RSYM,   _I_RSFT,   _O_RCTL,   \
-        _Z_LGUI,   _X,        _C_LNUM,   _D,        _V,        _K,        _H,        _COM_RNUM, _DOT,      _SL_RGUI,  \
+        _A_LGUI,   _R_LCTL,   _S_LSYM,   _T_LSFT,   _G,        _M,        _N_RSFT,   _E_RSYM,   _R_LCTL,   _O_LGUI,   \
+        _Z,        _X,        _C_LNUM,   _D,        _V,        _K,        _H,        _COM_RNUM, _DOT,      _SL,       \
                                                     _SPC,      _BSPC                                                  \
     ),
 
@@ -198,25 +199,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return true;
 
         /* Keep capslock on for the following keys */
-
         case _Q_LALT:
         case _E_LARR:
         case _I_RARR:
         case _P_RALT:
-        case _A_LCTL:
-        case _S_LSFT:
+        case _A_LGUI:
+        case _S_LCTL:
         case _D_LSYM:
+        case _F_LSFT:
+        case _J_RSFT:
         case _K_RSYM:
-        case _L_RSFT:
-        case _Z_LGUI:
+        case _L_RCTL:
         case _C_LNUM:
         case _F_LARR:
         case _U_RARR:
-        case _R_LSFT:
+        case _R_LCTL:
         case _S_LSYM:
+        case _T_LSFT:
+        case _N_RSFT:
         case _E_RSYM:
-        case _I_RSFT:
-        case _O_RCTL:
+        case _I_RCTL:
+        case _O_LGUI:
+
         case _A: case _B: case _C: case _D: case _E: case _F: case _G: case _H:
         case _I: case _J: case _K: case _L: case _M: case _N: case _O: case _P:
         case _Q: case _R: case _S: case _T: case _U: case _V: case _W: case _X:
@@ -231,10 +235,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return true;
 
         /* Don't disable capslock when symbol keys are held for layers/mods */
-        case _SCN_RCTL:
+        case _SCN_RGUI:
         case _COM_RNUM:
         case _SCN_RALT:
-        case _SL_RGUI:
             if(caps_on && record->tap.count && record->event.pressed){
                 toggle_capslock();
             }
