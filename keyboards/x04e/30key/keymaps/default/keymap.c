@@ -29,21 +29,25 @@ enum keycodes {
 
  * Custom QWERTY codes */
 #define _Q_LALT    LALT_T(_Q)
-#define _E_LARR    LT(LAYER_LEFT_ARROW, _E)
-#define _I_RARR    LT(LAYER_RIGHT_ARROW, _I)
 #define _P_RALT    RALT_T(_P)
 /* --- */
-#define _A_LGUI    LGUI_T(_A)
-#define _S_LCTL    LCTL_T(_S)
+#define _A_LCTL    LCTL_T(_A)
+#define _S_LSFT    LSFT_T(_S)
 #define _D_LSYM    LT(LAYER_LEFT_SYMBOL, _D)
-#define _F_LSFT    LSFT_T(_F)
-#define _J_RSFT    RSFT_T(_J)
+#define _QF_SPC    LT(LAYER_QWERTY, _F)
+#define _QG_BSPC   LT(LAYER_QWERTY, _G)
+#define _QH_BSPC   LT(LAYER_QWERTY, _H)
+#define _QJ_SPC    LT(LAYER_QWERTY, _J)
 #define _K_RSYM    LT(LAYER_RIGHT_SYMBOL, _K)
-#define _L_RCTL    RCTL_T(_L)
-#define _SCN_RGUI  LGUI_T(_SCN) // RGUI is MediaKey, so just use LGUI
+#define _L_RSFT    RSFT_T(_L)
+#define _SCN_RCTL  RCTL_T(_SCN)
 /* --- */
+#define _Z_LGUI    LGUI_T(_Z)
 #define _C_LNUM    LT(LAYER_LEFT_NUMBER, _C)
+#define _V_LARR    LT(LAYER_LEFT_ARROW, _V)
+#define _M_RARR    LT(LAYER_RIGHT_ARROW, _M)
 #define _COM_RNUM  LT(LAYER_RIGHT_NUMBER, _COM)
+#define _SL_RGUI   LGUI_T(_SL)
 
 
 /*
@@ -52,17 +56,20 @@ enum keycodes {
  Z  X  C* D  V  K  H  ,* .  /
 
  * Custom COLEMAK DH codes */
-#define _F_LARR    LT(LAYER_LEFT_ARROW, _F)
-#define _U_RARR    LT(LAYER_RIGHT_ARROW, _U)
 #define _SCN_RALT  RALT_T(_SCN)
 /* --- */
-#define _R_LCTL    LCTL_T(_R)
+#define _R_LSFT    LSFT_T(_R)
 #define _S_LSYM    LT(LAYER_LEFT_SYMBOL, _S)
-#define _T_LSFT    LSFT_T(_T)
-#define _N_RSFT    RSFT_T(_N)
+#define _CT_SPC    LT(LAYER_COLEMAK_DH, _T)
+#define _CG_BSPC   LT(LAYER_COLEMAK_DH, _G)
+#define _CM_BSPC   LT(LAYER_COLEMAK_DH, _M)
+#define _CN_SPC    LT(LAYER_COLEMAK_DH, _N)
 #define _E_RSYM    LT(LAYER_RIGHT_SYMBOL, _E)
-#define _I_RCTL    RCTL_T(_I)
-#define _O_LGUI    LGUI_T(_O)
+#define _I_RSFT    RSFT_T(_I)
+#define _O_RCTL    RCTL_T(_O)
+/* --- */
+#define _D_LARR    LT(LAYER_LEFT_ARROW, _D)
+#define _H_RARR    LT(LAYER_RIGHT_ARROW, _H)
 
 // TODO: Create adjust layer for changing keymaps/resetting?
 
@@ -79,16 +86,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_QWERTY] = LAYOUT( \
      /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
-        _Q_LALT,   _W,        _E_LARR,   _R,        _T,        _Y,        _U,        _I_RARR,   _O,        _P_RALT,   \
-        _A_LGUI,   _S_LCTL,   _D_LSYM,   _F_LSFT,   _G,        _H,        _J_RSFT,   _K_RSYM,   _L_RCTL,   _SCN_RGUI, \
-        _Z,        _X,        _C_LNUM,   _V,        _B,        _N,        _M,        _COM_RNUM, _DOT,      _SL        \
+        _Q_LALT,   _W,        _E,        _R,        _T,        _Y,        _U,        _I,         _O,       _P_RALT,   \
+        _A_LCTL,   _S_LSFT,   _D_LSYM,   _QF_SPC,   _QG_BSPC,  _QH_BSPC,  _QJ_SPC,   _K_RSYM,   _L_RSFT,   _SCN_RCTL, \
+        _Z_LGUI,   _X,        _C_LNUM,   _V_LARR,   _B,        _N,        _M_RARR,   _COM_RNUM, _DOT,      _SL_RGUI   \
     ),
 
     [LAYER_COLEMAK_DH] = LAYOUT( \
      /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
-        _Q_LALT,   _W,        _F_LARR,   _P,        _B,        _J,        _L,        _U_RARR,   _Y,        _SCN_RALT, \
-        _A_LGUI,   _R_LCTL,   _S_LSYM,   _T_LSFT,   _G,        _M,        _N_RSFT,   _E_RSYM,   _R_LCTL,   _O_LGUI,   \
-        _Z,        _X,        _C_LNUM,   _D,        _V,        _K,        _H,        _COM_RNUM, _DOT,      _SL        \
+        _Q_LALT,   _W,        _F,        _P,        _B,        _J,        _L,        _U,        _Y,        _SCN_RALT, \
+        _A_LCTL,   _R_LSFT,   _S_LSYM,   _CT_SPC,  _CG_BSPC,   _CM_BSPC,  _CN_SPC,   _E_RSYM,   _I_RSFT,   _O_RCTL,   \
+        _Z_LGUI,   _X,        _C_LNUM,   _D_LARR,   _V,        _K,        _H_RARR,   _COM_RNUM, _DOT,      _SL_RGUI   \
     ),
 
     [LAYER_LEFT_SYMBOL] = LAYOUT( \
@@ -144,9 +151,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case _E_LARR:   case _F_LARR:
-        case _C_LNUM:   case _I_RARR:
-        case _U_RARR:   case _COM_RNUM:
+        case _V_LARR:   case _D_LARR:
+        case _M_RARR:   case _H_RARR:
+        case _C_LNUM:   case _COM_RNUM:
             return 180;
             break;
 
@@ -155,14 +162,35 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case _K_RSYM:   case _E_RSYM:
             return 120;
 
+        /* Space and Backspace get short tapping term */
+        case _CT_SPC:
+        case _CN_SPC:
+        case _QF_SPC:
+        case _QJ_SPC:
+        case _CG_BSPC:
+        case _CM_BSPC:
+        case _QG_BSPC:
+        case _QH_BSPC:
+            return 140;
+
+
         default:
             return TAPPING_TERM;
             break;
     }
 }
 
-static bool caps_on = false;
+bool custom_tap_hold(keyrecord_t *record, uint16_t keycode){
+    if (!record -> tap.count && record -> event.pressed) {
+        register_code(keycode);
+        return false;
+    } else {
+        unregister_code(keycode);
+        return true;
+    }
+}
 
+static bool caps_on = false;
 void toggle_capslock(void){
     tap_code16(_CAPS);
     caps_on = !caps_on;
@@ -189,28 +217,39 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return true;
 
+
+        case _CT_SPC:
+        case _CN_SPC:
+        case _QF_SPC:
+        case _QJ_SPC:
+            return custom_tap_hold(record, _SPC);
+
+        case _CG_BSPC:
+        case _CM_BSPC:
+        case _QG_BSPC:
+        case _QH_BSPC:
+            return custom_tap_hold(record, _BSPC);
+
+
         /* Keep capslock on for the following keys */
         case _Q_LALT:
-        case _E_LARR:
-        case _I_RARR:
         case _P_RALT:
-        case _A_LGUI:
-        case _S_LCTL:
+        case _A_LCTL:
+        case _S_LSFT:
         case _D_LSYM:
-        case _F_LSFT:
-        case _J_RSFT:
         case _K_RSYM:
-        case _L_RCTL:
+        case _L_RSFT:
+        case _Z_LGUI:
         case _C_LNUM:
-        case _F_LARR:
-        case _U_RARR:
-        case _R_LCTL:
+        case _V_LARR:
+        case _M_RARR:
+        case _R_LSFT:
         case _S_LSYM:
-        case _T_LSFT:
-        case _N_RSFT:
         case _E_RSYM:
-        case _I_RCTL:
-        case _O_LGUI:
+        case _I_RSFT:
+        case _O_RCTL:
+        case _D_LARR:
+        case _H_RARR:
 
         case _A: case _B: case _C: case _D: case _E: case _F: case _G: case _H:
         case _I: case _J: case _K: case _L: case _M: case _N: case _O: case _P:
@@ -226,8 +265,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return true;
 
         /* Don't disable capslock when symbol keys are held for layers/mods */
-        case _SCN_RGUI:
         case _COM_RNUM:
+        case _SL_RGUI:
+        case _SCN_RCTL:
         case _SCN_RALT:
             if(caps_on && record->tap.count && record->event.pressed){
                 toggle_capslock();
