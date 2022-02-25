@@ -5,7 +5,6 @@
 enum layers {
     LAYER_QWERTY,
     LAYER_COLEMAK_DH,
-    LAYER_GAMING,
     LAYER_LEFT_SYMBOL,
     LAYER_RIGHT_SYMBOL,
     LAYER_LEFT_NUMBER,
@@ -79,7 +78,6 @@ enum keycodes {
 #define RNUM    MO(LAYER_RIGHT_NUMBER)
 #define LARR    MO(LAYER_LEFT_ARROW)
 #define RARR    MO(LAYER_RIGHT_ARROW)
-#define GAMING  DF(LAYER_GAMING) /* GAMING layer shouldn't be set persistently */
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -99,52 +97,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [LAYER_LEFT_SYMBOL] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
+     /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    _TAB,   _DEL,   _RSB,   _PLS,   _AMP,   _LAB,   _RAB,   \
         xxx,    xxx,    TRNS,   _ESC,   _UPPR,  _RPR,   _DQT,   _USD,   _EX,    xxx,    \
         xxx,    xxx,    xxx,    _ENT,   xxx,    _RCB,   _EQ,    _AST,   _HSH,   _AT     \
     ),
 
     [LAYER_RIGHT_SYMBOL] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
+     /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         _GBP,   _BTK,   _PIP,   _UND,   _LSB,   _DEL,   _TAB,   xxx,    xxx,    xxx,    \
         xxx,    _PRC,   _SQT,   _MIN,   _LPR,   _UPPR,  _ESC,   TRNS,   xxx,    xxx,    \
         _EUR,   _CRT,   _BSL,   _TLD,   _LCB,   xxx,    _ENT,   xxx,    xxx,    xxx     \
     ),
 
     [LAYER_LEFT_NUMBER] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
+     /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    _TAB,   _DEL,   xxx,    _7,     _8,     _9,     xxx,    \
         xxx,    xxx,    xxx,    _ESC,   _UPPR,  xxx,    _4,     _5,     _6,     _0,     \
         xxx,    xxx,    TRNS,   _ENT,   xxx,    xxx,    _1,     _2,     _3,     xxx     \
     ),
 
     [LAYER_RIGHT_NUMBER] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
+     /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    _7,     _8,     _9,     xxx,    _DEL,   _TAB,   xxx,    xxx,    xxx,    \
         _0,     _4,     _5,     _6,     xxx,    _UPPR,  _ESC,   xxx,    xxx,    xxx,    \
         xxx,    _1,     _2,     _3,     xxx,    xxx,    _ENT,   TRNS,   xxx,    xxx     \
     ),
 
     [LAYER_LEFT_ARROW] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
-        COLEMAK,QWERTY, TRNS,   _TAB,   _DEL,   _F6,    _F7,    _F8,    _F9,    _F10,   \
-        _V_P,   _V_VD,  _V_VU,  _ESC,   _UPPR,  _F12,   _AR_L,  _AR_D,  _AR_U,  _AR_R,  \
-        RESET,  xxx,    GAMING, _ENT,   xxx,    xxx,    _HOME,  _PG_D,  _PG_U,  _END    \
+     /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
+        COLEMAK,QWERTY, xxx,    xxx,    xxx,    _F6,    _F7,    _F8,    _F9,    _F10,   \
+        _V_VU,  _V_VD,  _V_P,   xxx,    xxx,    _F12,   _AR_L,  _AR_D,  _AR_U,  _AR_R,  \
+        RESET,  xxx,    xxx,    TRNS,   xxx,    xxx,    _HOME,  _PG_D,  _PG_U,  _END    \
     ),
 
     [LAYER_RIGHT_ARROW] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
-        _F1,    _F2,    _F3,    _F4,    _F5,    _DEL,   _TAB,   TRNS,   QWERTY, COLEMAK,\
-        _AR_L,  _AR_D,  _AR_U,  _AR_R,  _F12,   _UPPR,  _ESC,   _V_P,   _V_VD,  _V_VU,  \
-        _HOME,  _PG_D,  _PG_U,  _END,   xxx,    xxx,    _ENT,   GAMING, xxx,    RESET   \
-    ),
-
-    [LAYER_GAMING] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── */
-        _TAB,   _Q,     _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,     \
-        _ESC,   _A,     _S,     _D,     _F,     _G,     _H,     _J,     _K,     QWERTY, \
-        _CTL,   _Z,     _X,     _C,     _V,     _B,     _N,     _M,     _COM,   COLEMAK \
+     /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
+        _F1,    _F2,    _F3,    _F4,    _F5,    xxx,    xxx,    xxx,    QWERTY, COLEMAK,\
+        _AR_L,  _AR_D,  _AR_U,  _AR_R,  _F12,   xxx,    xxx,    _V_P,   _V_VD,  _V_VU,  \
+        _HOME,  _PG_D,  _PG_U,  _END,   xxx,    xxx,    TRNS,   xxx,    xxx,    RESET   \
     )
 
 };
