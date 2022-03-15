@@ -151,7 +151,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         /* Custom keys */
         case _SP_TB:
         case _BS_DL:
-            return 120;
+            return 180;
 
 
         default:
