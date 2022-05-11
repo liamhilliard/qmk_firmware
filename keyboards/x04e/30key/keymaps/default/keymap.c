@@ -21,7 +21,7 @@ enum keycodes { QWERTY = SAFE_RANGE, COLEMAK };
  Z  X  C* V  B  N  M  ,* .  ?
  * Custom QWERTY codes */
 #define _Q_LALT    LALT_T(_Q)
-#define _P_RALT    RALT_T(_P)
+#define _P_RALT    LALT_T(_P)
 /* --- */
 #define _A_LGUI    LGUI_T(_A)
 #define _S_LCTL    LCTL_T(_S)
@@ -40,7 +40,7 @@ enum keycodes { QWERTY = SAFE_RANGE, COLEMAK };
  A* R* S* T* G  M  N* E* I* O*
  Z  X  C* D  V  K  H  ,* .  ?
  * Custom COLEMAK DH codes */
-#define _SCN_RALT  RALT_T(_SCN)
+#define _SCN_RALT  LALT_T(_SCN)
 /* --- */
 #define _R_LCTL    LCTL_T(_R)
 #define _S_LSYM    LT(LAYER_LEFT_SYMBOL, _S)
