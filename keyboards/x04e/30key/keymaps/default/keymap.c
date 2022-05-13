@@ -20,17 +20,17 @@ enum keycodes { QWERTY = SAFE_RANGE, COLEMAK };
  A* S* D* F* G  H  J* K* L* ;*
  Z  X  C* V  B  N  M  ,* .  ?
  * Custom QWERTY codes */
-#define _Q_LALT    LALT_T(_Q)
-#define _P_RALT    LALT_T(_P)
+#define _Q_LGUI    LGUI_T(_Q)
+#define _P_RGUI    LGUI_T(_P)
 /* --- */
-#define _A_LGUI    LGUI_T(_A)
+#define _A_LALT    LALT_T(_A)
 #define _S_LCTL    LCTL_T(_S)
 #define _D_LSYM    LT(LAYER_LEFT_SYMBOL, _D)
 #define _F_SFT     LSFT_T(_F)
 #define _J_SFT     LSFT_T(_J)
 #define _K_RSYM    LT(LAYER_RIGHT_SYMBOL, _K)
 #define _L_RCTL    LCTL_T(_L)
-#define _SCN_RGUI  LGUI_T(_SCN)
+#define _SCN_RALT  LALT_T(_SCN)
 /* --- */
 #define _C_ARR     LT(LAYER_ARROW, _C)
 #define _COM_NUM   LT(LAYER_NUMBER, _COM)
@@ -40,7 +40,7 @@ enum keycodes { QWERTY = SAFE_RANGE, COLEMAK };
  A* R* S* T* G  M  N* E* I* O*
  Z  X  C* D  V  K  H  ,* .  ?
  * Custom COLEMAK DH codes */
-#define _SCN_RALT  LALT_T(_SCN)
+#define _SCN_RGUI  LGUI_T(_SCN)
 /* --- */
 #define _R_LCTL    LCTL_T(_R)
 #define _S_LSYM    LT(LAYER_LEFT_SYMBOL, _S)
@@ -48,7 +48,7 @@ enum keycodes { QWERTY = SAFE_RANGE, COLEMAK };
 #define _N_SFT     LSFT_T(_N)
 #define _E_RSYM    LT(LAYER_RIGHT_SYMBOL, _E)
 #define _I_RCTL    LCTL_T(_I)
-#define _O_RGUI    LGUI_T(_O)
+#define _O_RALT    LALT_T(_O)
 /* --- */
 
 /* CAPS Word functionality */
@@ -59,15 +59,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_QWERTY] = LAYOUT( \
      /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
-        _Q_LALT,   _W,        _E,        _R,        _T,        _Y,        _U,        _I,         _O,       _P_RALT,   \
-        _A_LGUI,   _S_LCTL,   _D_LSYM,   _F_SFT,    _G,        _H,        _J_SFT,    _K_RSYM,   _L_RCTL,   _SCN_RGUI, \
+        _Q_LGUI,   _W,        _E,        _R,        _T,        _Y,        _U,        _I,         _O,       _P_RGUI,   \
+        _A_LALT,   _S_LCTL,   _D_LSYM,   _F_SFT,    _G,        _H,        _J_SFT,    _K_RSYM,   _L_RCTL,   _SCN_RALT, \
         _Z,        _X,        _C_ARR,    _V,        _B,        _N,        _M,        _COM_NUM,  _DOT,      _SL        \
     ),
 
     [LAYER_COLEMAK_DH] = LAYOUT( \
      /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
-        _Q_LALT,   _W,        _F,        _P,        _B,        _J,        _L,        _U,        _Y,        _SCN_RALT, \
-        _A_LGUI,   _R_LCTL,   _S_LSYM,   _T_SFT,    _G,        _M,        _N_SFT,    _E_RSYM,   _I_RCTL,   _O_RGUI,   \
+        _Q_LGUI,   _W,        _F,        _P,        _B,        _J,        _L,        _U,        _Y,        _SCN_RGUI, \
+        _A_LALT,   _R_LCTL,   _S_LSYM,   _T_SFT,    _G,        _M,        _N_SFT,    _E_RSYM,   _I_RCTL,   _O_RALT,   \
         _Z,        _X,        _C_ARR,    _D,        _V,        _K,        _H,        _COM_NUM,  _DOT,      _SL        \
     ),
 
@@ -158,10 +158,10 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
             break;
 
         /* Keep capslock on for the following keys */
-        case _Q_LALT: case _P_RALT: case _A_LGUI: case _S_LCTL: case _D_LSYM:
+        case _Q_LGUI: case _P_RGUI: case _A_LALT: case _S_LCTL: case _D_LSYM:
         case _F_SFT:  case _J_SFT:  case _K_RSYM: case _L_RCTL: case _C_ARR:
         case _R_LCTL: case _S_LSYM: case _T_SFT:  case _N_SFT:  case _E_RSYM:
-        case _I_RCTL: case _O_RGUI:
+        case _I_RCTL: case _O_RALT:
         case _A: case _B: case _C: case _D: case _E: case _F: case _G: case _H:
         case _I: case _J: case _K: case _L: case _M: case _N: case _O: case _P:
         case _Q: case _R: case _S: case _T: case _U: case _V: case _W: case _X:
@@ -172,9 +172,9 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
             break;
 
         /* Don't disable capslock when symbol keys are held for layers/mods */
-        case _SCN_RGUI:
-        case _COM_NUM:
         case _SCN_RALT:
+        case _COM_NUM:
+        case _SCN_RGUI:
             if(record->tap.count && record->event.pressed){
                 if(caps_word_on){
                     tap_code16(_CAPS);
