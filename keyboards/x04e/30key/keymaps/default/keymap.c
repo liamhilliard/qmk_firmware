@@ -124,6 +124,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         /* Important symbol layer keys get short tapping term */
         case _D_LSYM:   case _S_LSYM:
         case _K_RSYM:   case _E_RSYM:
+        case _COM_DOT:
             return 120;
 
         case _UPPR:
