@@ -33,7 +33,7 @@ enum keycodes { QWERTY = SAFE_RANGE, COLEMAK };
 #define _SCN_RALT  LALT_T(_SCN)
 /* --- */
 #define _C_ARR     LT(LAYER_ARROW, _C)
-#define _COM_NUM   LT(LAYER_NUMBER, _COM)
+#define _SPC_NUM   LT(LAYER_NUMBER, _SPC)
 
 /*
  Q* W  F  P  B  J  L  U  Y  ;*
@@ -53,7 +53,7 @@ enum keycodes { QWERTY = SAFE_RANGE, COLEMAK };
 
 /* CAPS Word functionality */
 #define _UPPR      LT(0, KC_NO)
-
+#define _COM_DOT   LT(0, _DOT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -61,55 +61,55 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
         _Q_LGUI,   _W,        _E,        _R,        _T,        _Y,        _U,        _I,         _O,       _P_RGUI,   \
         _A_LALT,   _S_LCTL,   _D_LSYM,   _F_SFT,    _G,        _H,        _J_SFT,    _K_RSYM,   _L_RCTL,   _SCN_RALT, \
-        _Z,        _X,        _C_ARR,    _V,        _B,        _N,        _M,        _COM_NUM,  _DOT,      _SL        \
+        _Z,        _X,        _C_ARR,    _V,        _B,        _N,        _M,        _SPC_NUM,  _COM_DOT,  _SL        \
     ),
 
     [LAYER_COLEMAK_DH] = LAYOUT( \
      /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
         _Q_LGUI,   _W,        _F,        _P,        _B,        _J,        _L,        _U,        _Y,        _SCN_RGUI, \
         _A_LALT,   _R_LCTL,   _S_LSYM,   _T_SFT,    _G,        _M,        _N_SFT,    _E_RSYM,   _I_RCTL,   _O_RALT,   \
-        _Z,        _X,        _C_ARR,    _D,        _V,        _K,        _H,        _COM_NUM,  _DOT,      _SL        \
+        _Z,        _X,        _C_ARR,    _D,        _V,        _K,        _H,        _SPC_NUM,  _COM_DOT,  _SL        \
     ),
 
     [LAYER_LEFT_SYMBOL] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    _TAB,   xxx,    _RSB,   _PLS,   _AMP,   _LAB,   _RAB,   \
-        xxx,    LADJ,   xxx,    _SPC,   _UPPR,  _RPR,   _DQT,   _USD,   _EX,    xxx,    \
+        _UPPR,  LADJ,   xxx,    _BSPC,  xxx,    _RPR,   _DQT,   _USD,   _EX,    xxx,    \
         xxx,    xxx,    xxx,    _ESC,   xxx,    _RCB,   _EQ,    _AST,   _HSH,   _AT     \
     ),
 
     [LAYER_RIGHT_SYMBOL] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         _GBP,   _BTK,   _PIP,   _UND,   _LSB,   xxx,    _DEL,   xxx,    xxx,    xxx,    \
-        xxx,    _PRC,   _SQT,   _MIN,   _LPR,   _UPPR,  _BSPC,  xxx,    RADJ,   xxx,    \
+        xxx,    _PRC,   _SQT,   _MIN,   _LPR,   xxx,    _BSPC,  xxx,    RADJ,   _UPPR,  \
         _EUR,   _CRT,   _BSL,   _TLD,   _LCB,   xxx,    _ENT,   xxx,    xxx,    xxx     \
     ),
 
     [LAYER_ARROW] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    _TAB,   xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    \
-        xxx,    LADJ,   xxx,    _SPC,   _UPPR,  xxx,    _AR_L,  _AR_D,  _AR_U,  _AR_R,  \
+        _UPPR,  LADJ,   xxx,    _BSPC,  xxx,    xxx,    _AR_L,  _AR_D,  _AR_U,  _AR_R,  \
         xxx,    xxx,    xxx,    _ESC,   xxx,    xxx,    _HOME,  _PG_D,  _PG_U,  _END    \
     ),
 
     [LAYER_NUMBER] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    _7,     _8,     _9,     xxx,    xxx,    _DEL,   xxx,    xxx,    xxx,    \
-        _0,     _4,     _5,     _6,     xxx,    _UPPR,  _BSPC,  xxx,    RADJ,   xxx,    \
+        _0,     _4,     _5,     _6,     xxx,    xxx,    _BSPC,  xxx,    RADJ,   _UPPR,  \
         xxx,    _1,     _2,     _3,     xxx,    xxx,    _ENT,   xxx,    xxx,    xxx     \
     ),
 
     [LAYER_LEFT_ADJUST] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         COLEMAK,QWERTY, xxx,    _TAB,   xxx,    _F6,    _F7,    _F8,    _F9,    _F10,   \
-        xxx,    TRNS,   xxx,    _SPC,   _UPPR,  _F12,   _V_P,   _V_VD,  _V_VU,  xxx,    \
+        _UPPR,  TRNS,   xxx,    _BSPC,  xxx,    _F12,   _V_P,   _V_VD,  _V_VU,  xxx,    \
         RESET,  xxx,    xxx,    _ESC,   xxx,    xxx,    xxx,    xxx,    xxx,    xxx     \
     ),
 
     [LAYER_RIGHT_ADJUST] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         _F1,    _F2,    _F3,    _F4,    _F5,    xxx,    _DEL,   xxx,    QWERTY, COLEMAK,\
-        xxx,    _V_VD,  _V_VU,  _V_P,   _F12,   _UPPR,  _BSPC,  xxx,    TRNS,   xxx,    \
+        xxx,    _V_VD,  _V_VU,  _V_P,   _F12,   xxx,    _BSPC,  xxx,    TRNS,   _UPPR,  \
         xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    _ENT,   xxx,    xxx,    RESET   \
     )
 
@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case _C_ARR:
-        case _COM_NUM:
+        case _SPC_NUM:
             return 180;
 
         /* Important symbol layer keys get short tapping term */
@@ -137,16 +137,21 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 static bool caps_on = false; /* Tracks state of CAPSLOCK */
 static bool caps_word_on = false; /* Tracks whether caps word is active */
 
+bool is_pressed(keyrecord_t *record) { return record->event.pressed; }
+bool is_released(keyrecord_t *record) { return !is_pressed(record); }
+bool is_tapped(keyrecord_t *record) { return record->tap.count; }
+bool is_held(keyrecord_t *record) { return !is_tapped(record); }
+
 void process_capslock(uint16_t keycode, keyrecord_t *record){
 
     switch(keycode) {
 
         case _UPPR:
-            if(record -> event.pressed){
+            if(is_pressed(record)) {
                 tap_code16(_CAPS);
                 caps_on = !caps_on;
 
-                if(record -> tap.count){
+                if(is_tapped(record)) {
                     //tapped - treated as caps word
                     caps_word_on = caps_on;
 
@@ -173,9 +178,9 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
 
         /* Don't disable capslock when symbol keys are held for layers/mods */
         case _SCN_RALT:
-        case _COM_NUM:
+        case _SPC_NUM:
         case _SCN_RGUI:
-            if(record->tap.count && record->event.pressed){
+            if(is_tapped(record) && is_pressed(record)) {
                 if(caps_word_on){
                     tap_code16(_CAPS);
                     caps_on = !caps_on;
@@ -186,7 +191,7 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
 
         /* Disable capslock for all other key presses */
         default:
-            if(record->event.pressed) {
+            if(is_pressed(record)) {
                 if(caps_word_on){
                     tap_code16(_CAPS);
                     caps_on = !caps_on;
@@ -197,16 +202,14 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
 }
 
 void process_persistent_layer(uint16_t keycode, keyrecord_t *record){
+    if (is_released(record)) return;
+
     switch(keycode){
         case QWERTY:
-            if (record->event.pressed) {
-                set_single_persistent_default_layer(LAYER_QWERTY);
-            }
+            set_single_persistent_default_layer(LAYER_QWERTY);
 
         case COLEMAK:
-            if (record->event.pressed) {
-                set_single_persistent_default_layer(LAYER_COLEMAK_DH);
-            }
+            set_single_persistent_default_layer(LAYER_COLEMAK_DH);
     }
 }
 
@@ -214,6 +217,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     /* Custom handlers that don't stop key processing */
     process_capslock(keycode, record);
     process_persistent_layer(keycode, record);
+
+    switch(keycode) {
+        case _COM_DOT:
+            if(is_held(record) && is_pressed(record)) {
+                tap_code16(_COM);
+                return false;
+            }
+            break;
+    }
     return true;
 }
 

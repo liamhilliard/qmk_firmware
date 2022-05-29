@@ -1,1 +1,1 @@
-# The improved keymap for 30key
+# The default keymap for 30key
