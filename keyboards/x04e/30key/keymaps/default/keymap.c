@@ -208,9 +208,11 @@ void process_persistent_layer(uint16_t keycode, keyrecord_t *record){
     switch(keycode){
         case QWERTY:
             set_single_persistent_default_layer(LAYER_QWERTY);
+            break;
 
         case COLEMAK:
             set_single_persistent_default_layer(LAYER_COLEMAK_DH);
+            break;
     }
 }
 
