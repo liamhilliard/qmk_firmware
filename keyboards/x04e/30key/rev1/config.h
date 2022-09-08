@@ -10,10 +10,10 @@
 #define PRODUCT_ID   0x04E1
 #define PRODUCT_ID   0x0000
 #define MANUFACTURER x04e
-#define PRODUCT      34key
+#define PRODUCT      30key
 
 /* key matrix size */
-#define MATRIX_ROWS 4
+#define MATRIX_ROWS 3
 #define MATRIX_COLS 10
 /*
  * Keyboard Matrix Assignments
@@ -56,7 +56,7 @@
  * └──────────────────────────┘
  *
  */
-#define MATRIX_ROW_PINS { D0, D4, F5, F6 }
+#define MATRIX_ROW_PINS { F4, F5, F6 }
 #define MATRIX_COL_PINS { F7, B1, B3, B2, B6, B5, B4, E6, D7, C6 }
 #define UNUSED_PINS
 
@@ -70,7 +70,9 @@
 
 // Home row mods configs
 #define IGNORE_MOD_TAP_INTERRUPT
-#define TAPPING_TERM 220
+#define TAPPING_TERM 180
+#define TAPPING_FORCE_HOLD
+#define TAPPING_TERM_PER_KEY
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5

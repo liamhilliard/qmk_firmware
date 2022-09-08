@@ -3,12 +3,14 @@
 
 #pragma once
 
-#include "quantum.h"
 
-#if defined(x04e_30key_lowp)
-#   include "lowp.h"
+#if defined(KEYBOARD_x04e_30key_lowp)
+    #include "lowp.h"
+#elif defined(KEYBOARD_x04e_30key_rev1)
+    #include "rev1.h"
 #endif
 
+#include "quantum.h"
 /* This is a shortcut to help you visually see your layout.
  *
  * The first section contains all of the arguments representing the physical
