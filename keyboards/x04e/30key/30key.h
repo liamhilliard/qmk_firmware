@@ -3,13 +3,6 @@
 
 #pragma once
 
-
-#if defined(KEYBOARD_x04e_30key_lowp)
-    #include "lowp.h"
-#elif defined(KEYBOARD_x04e_30key_rev1)
-    #include "rev1.h"
-#endif
-
 #include "quantum.h"
 /* This is a shortcut to help you visually see your layout.
  *
