@@ -5,13 +5,6 @@
 
 #include "config_common.h"
 
-/* USB Device descriptor parameter */
-#define VENDOR_ID    0x04E0
-#define PRODUCT_ID   0x04E1
-#define PRODUCT_ID   0x0000
-#define MANUFACTURER x04e
-#define PRODUCT      30key
-
 /* key matrix size */
 #define MATRIX_ROWS 3
 #define MATRIX_COLS 10
