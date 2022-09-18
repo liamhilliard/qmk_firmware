@@ -54,6 +54,7 @@ enum keycodes { QWERTY = SAFE_RANGE, COLEMAK };
 /* CAPS Word functionality */
 #define _UPPR      LT(0, KC_NO)
 #define _COM_DOT   LT(0, _DOT)
+#define _SL_BSPC   LT(0, _SL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -61,14 +62,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
         _Q_LGUI,   _W,        _E,        _R,        _T,        _Y,        _U,        _I,         _O,       _P_RGUI,   \
         _A_LALT,   _S_LCTL,   _D_LSYM,   _F_SFT,    _G,        _H,        _J_SFT,    _K_RSYM,   _L_RCTL,   _SCN_RALT, \
-        _Z,        _X,        _C_ARR,    _V,        _B,        _N,        _M,        _SPC_NUM,  _COM_DOT,  _SL        \
+        _Z,        _X,        _C_ARR,    _V,        _B,        _N,        _M,        _SPC_NUM,  _COM_DOT,  _SL_BSPC   \
     ),
 
     [LAYER_COLEMAK_DH] = LAYOUT( \
      /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
         _Q_LGUI,   _W,        _F,        _P,        _B,        _J,        _L,        _U,        _Y,        _SCN_RGUI, \
         _A_LALT,   _R_LCTL,   _S_LSYM,   _T_SFT,    _G,        _M,        _N_SFT,    _E_RSYM,   _I_RCTL,   _O_RALT,   \
-        _Z,        _X,        _C_ARR,    _D,        _V,        _K,        _H,        _SPC_NUM,  _COM_DOT,  _SL        \
+        _Z,        _X,        _C_ARR,    _D,        _V,        _K,        _H,        _SPC_NUM,  _COM_DOT,  _SL_BSPC   \
     ),
 
     [LAYER_LEFT_SYMBOL] = LAYOUT( \
@@ -124,7 +125,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         /* Important symbol layer keys get short tapping term */
         case _D_LSYM:   case _S_LSYM:
         case _K_RSYM:   case _E_RSYM:
-        case _COM_DOT:
+        case _COM_DOT:  case _SL_BSPC:
             return 120;
 
         case _UPPR:
@@ -222,9 +223,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     process_persistent_layer(keycode, record);
 
     switch(keycode) {
+        case _SL_BSPC:
+            if(is_held(record)){
+                if(is_pressed(record)) {
+                    register_code16(_BSPC);
+                } else {
+                    unregister_code16(_BSPC);
+                }
+                return false;
+            }
+            break;
         case _COM_DOT:
-            if(is_held(record) && is_pressed(record)) {
-                tap_code16(_COM);
+            if(is_held(record)){
+                if(is_pressed(record)) {
+                    register_code16(_COM);
+                } else {
+                    unregister_code16(_COM);
+                }
                 return false;
             }
             break;
