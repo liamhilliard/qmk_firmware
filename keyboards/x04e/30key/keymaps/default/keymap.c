@@ -110,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LAYER_RIGHT_ADJUST] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         _F1,    _F2,    _F3,    _F4,    _F5,    xxx,    _DEL,   xxx,    QWERTY, COLEMAK,\
-        xxx,    _V_VD,  _V_VU,  _V_P,   _F12,   xxx,    _BSPC,  xxx,    TRNS,   _UPPR,  \
+        xxx,    _V_VD,  _V_VU,  _V_P,   _F11,   xxx,    _BSPC,  xxx,    TRNS,   _UPPR,  \
         xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    _ENT,   xxx,    xxx,    RESET   \
     )
 
