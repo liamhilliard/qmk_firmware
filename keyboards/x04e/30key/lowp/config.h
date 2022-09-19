@@ -30,6 +30,8 @@
  * └──────────────────────────┘
  *
  */
+#undef MATRIX_ROW_PINS
+#undef MATRIX_COL_PINS
 #define MATRIX_ROW_PINS { D1, D0, D4 }
 #define MATRIX_COL_PINS { C6, D7, E6, B4, B5, B6, B2, B3, B1, F7 }
 
