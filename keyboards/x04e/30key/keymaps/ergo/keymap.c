@@ -32,8 +32,6 @@ enum layers {
 /* Other mods */
 #define _UPPR      LT(0, KC_NO)
 #define _COM_DOT   LT(0, _DOT)
-#define _V_BSPC    LT(0, _V)
-#define _M_BSPC    LT(0, _M)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -41,14 +39,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
         _Q_LGUI,   _W,        _E,        _R,        _T,        _Y,        _U,        _I,        _O,        _P_RGUI,   \
         _A_LCTL,   _S_LSFT,   _D_LSYM,   _F_LARR,   _G,        _H,        _J_RNUM,   _K_RSYM,   _L_RSFT,   _SCN_RCTL, \
-        _Z_LALT,    _X,       _C,        _V_BSPC,   _B,        _N,        _M_BSPC,   _SPC,      _COM_DOT,  _SL_RALT   \
+        _Z_LALT,    _X,       _C,        _V,        _B,        _N,        _M,        _SPC,      _COM_DOT,  _SL_RALT   \
     ),
 
     [LAYER_LEFT_SYMBOL] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    _TAB,   xxx,    _RSB,   _PLS,   _AMP,   _LAB,   _RAB,   \
-        _UPPR,  LADJ,   xxx,    _ESC,   xxx,    _RPR,   _DQT,   _USD,   _EX,    xxx,    \
-        xxx,    xxx,    xxx,    xxx,    xxx,    _RCB,   _EQ,    _AST,   _HSH,   _AT     \
+        _UPPR,  LADJ,   xxx,    _BSPC,  xxx,    _RPR,   _DQT,   _USD,   _EX,    xxx,    \
+        xxx,    xxx,    xxx,    _ESC,   xxx,    _RCB,   _EQ,    _AST,   _HSH,   _AT     \
     ),
 
     [LAYER_RIGHT_SYMBOL] = LAYOUT( \
@@ -96,7 +94,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
         /* Important symbol layer keys get short tapping term */
         case _D_LSYM:   case _K_RSYM:
-        case _V_BSPC:   case _M_BSPC:
         case _COM_DOT:
             return 120;
 
@@ -153,7 +150,7 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
         case _Q_LGUI: case _P_RGUI:
         case _A_LCTL: case _S_LSFT: case _D_LSYM: case _F_LARR:
         case _J_RNUM: case _K_RSYM: case _L_RSFT:
-        case _Z_LALT: case _V_BSPC: case _M_BSPC:
+        case _Z_LALT:
         case _A: case _B: case _C: case _D: case _E: case _F: case _G: case _H:
         case _I: case _J: case _K: case _L: case _M: case _N: case _O: case _P:
         case _Q: case _R: case _S: case _T: case _U: case _V: case _W: case _X:
@@ -198,18 +195,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     register_code16(_COM);
                 } else {
                     unregister_code16(_COM);
-                }
-                return false;
-            }
-            break;
-
-        case _V_BSPC:
-        case _M_BSPC:
-            if(is_held(record)){
-                if(is_pressed(record)) {
-                    register_code16(_BSPC);
-                } else {
-                    unregister_code16(_BSPC);
                 }
                 return false;
             }
