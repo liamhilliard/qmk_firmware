@@ -24,7 +24,7 @@ enum layers {
 #define _J_RNUM    LT(LAYER_NUMBER, _J)
 #define _K_RSYM    LT(LAYER_RIGHT_SYMBOL, _K)
 #define _L_RSFT    LSFT_T(_L)
-#define _SCN_RCTL  LCTL_T(_SCN)
+#define _BSPC_CTL  LCTL_T(_BSPC)
 /* --- */
 #define _Z_LALT    LALT_T(_Z)
 #define _SL_RALT   LALT_T(_SL)
@@ -38,22 +38,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LAYER_QWERTY] = LAYOUT( \
      /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
         _Q_LGUI,   _W,        _E,        _R,        _T,        _Y,        _U,        _I,        _O,        _P_RGUI,   \
-        _A_LCTL,   _S_LSFT,   _D_LSYM,   _F_LARR,   _G,        _H,        _J_RNUM,   _K_RSYM,   _L_RSFT,   _SCN_RCTL, \
+        _A_LCTL,   _S_LSFT,   _D_LSYM,   _F_LARR,   _G,        _H,        _J_RNUM,   _K_RSYM,   _L_RSFT,   _BSPC_CTL, \
         _Z_LALT,    _X,       _C,        _V,        _B,        _N,        _M,        _SPC,      _COM_DOT,  _SL_RALT   \
     ),
 
     [LAYER_LEFT_SYMBOL] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    _TAB,   xxx,    _RSB,   _PLS,   _AMP,   _LAB,   _RAB,   \
-        _UPPR,  LADJ,   xxx,    _BSPC,  xxx,    _RPR,   _DQT,   _USD,   _EX,    xxx,    \
+        _UPPR,  LADJ,   xxx,    _BSPC,  xxx,    _RPR,   _DQT,   _USD,   _EX,    _CN,   \
         xxx,    xxx,    xxx,    _ESC,   xxx,    _RCB,   _EQ,    _AST,   _HSH,   _AT     \
     ),
 
     [LAYER_RIGHT_SYMBOL] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         _GBP,   _BTK,   _PIP,   _UND,   _LSB,   xxx,    _DEL,   xxx,    xxx,    xxx,    \
-        xxx,    _PRC,   _SQT,   _MIN,   _LPR,   xxx,    _ENT,   xxx,    RADJ,   _UPPR,  \
-        _EUR,   _CRT,   _BSL,   _TLD,   _LCB,   xxx,    xxx,    xxx,    xxx,    xxx     \
+        _SCN,   _PRC,   _SQT,   _MIN,   _LPR,   xxx,    xxx,    xxx,    RADJ,   _UPPR,  \
+        _EUR,   _CRT,   _BSL,   _TLD,   _LCB,   xxx,    _ENT,   xxx,    xxx,    xxx     \
     ),
 
     [LAYER_ARROW] = LAYOUT( \
@@ -161,7 +161,7 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
             break;
 
         // Don't disable capslock when symbol keys are held for layers/mods
-        case _SCN_RCTL:
+        case _BSPC_CTL:
             if(is_tapped(record) && is_pressed(record)) {
                 if(caps_word_on){
                     tap_code16(_CAPS);
