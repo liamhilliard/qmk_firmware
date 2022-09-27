@@ -5,41 +5,42 @@
 enum layers {
     LAYER_QWERTY,
     LAYER_LEFT_SYMBOL,  LAYER_RIGHT_SYMBOL,
-    LAYER_ARROW,
-    LAYER_NUMBER,
+    LAYER_LEFT_ARROW,   LAYER_RIGHT_ARROW,
+    LAYER_LEFT_NUMBER,  LAYER_RIGHT_NUMBER,
     LAYER_LEFT_ADJUST,  LAYER_RIGHT_ADJUST
 };
 
-#define LADJ       MO(LAYER_LEFT_ADJUST)
-#define RADJ       MO(LAYER_RIGHT_ADJUST)
+#define LADJ      MO(LAYER_LEFT_ADJUST)
+#define RADJ      MO(LAYER_RIGHT_ADJUST)
 
 /* Custom QWERTY codes */
-#define _Q_LGUI    LGUI_T(_Q)
-#define _P_RGUI    LGUI_T(_P)
+#define _Q_HM     LGUI_T(_Q)
+#define _P_HM     LGUI_T(_P)
 /* --- */
-#define _A_LCTL    LCTL_T(_A)
-#define _S_LSFT    LSFT_T(_S)
-#define _D_LSYM    LT(LAYER_LEFT_SYMBOL, _D)
-#define _F_LARR    LT(LAYER_ARROW, _F)
-#define _J_RNUM    LT(LAYER_NUMBER, _J)
-#define _K_RSYM    LT(LAYER_RIGHT_SYMBOL, _K)
-#define _L_RSFT    LSFT_T(_L)
-#define _BSPC_CTL  LCTL_T(_BSPC)
+#define _A_HM     LSFT_T(_A)
+#define _S_HM     LCTL_T(_S)
+#define _D_SYM    LT(LAYER_LEFT_SYMBOL, _D)
+#define _F_SPEC   LT(LAYER_LEFT_ARROW, _F)
+#define _J_SPEC   LT(LAYER_RIGHT_NUMBER, _J)
+#define _K_SYM    LT(LAYER_RIGHT_SYMBOL, _K)
+#define _L_HM     LCTL_T(_L)
+#define _SCN_HM   LSFT_T(_SCN)
 /* --- */
-#define _Z_LALT    LALT_T(_Z)
-#define _SL_RALT   LALT_T(_SL)
+#define _Z_HM     LALT_T(_Z)
+#define _SL_HM    LALT_T(_SL)
 
 /* Other mods */
-#define _UPPR      LT(0, KC_NO)
-#define _COM_DOT   LT(0, _DOT)
+#define _UPPR     LT(0, KC_NO)
+#define _COM_DOT  LT(0, _DOT)
+#define _SPC_BSP  LT(0, _SPC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_QWERTY] = LAYOUT( \
      /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
-        _Q_LGUI,   _W,        _E,        _R,        _T,        _Y,        _U,        _I,        _O,        _P_RGUI,   \
-        _A_LCTL,   _S_LSFT,   _D_LSYM,   _F_LARR,   _G,        _H,        _J_RNUM,   _K_RSYM,   _L_RSFT,   _BSPC_CTL, \
-        _Z_LALT,    _X,       _C,        _V,        _B,        _N,        _M,        _SPC,      _COM_DOT,  _SL_RALT   \
+        _Q_HM,     _W,        _E,        _R,        _T,        _Y,        _U,        _I,        _O,        _P_HM,    \
+        _A_HM,     _S_HM,     _D_SYM,    _F_SPEC,   _G,        _H,        _J_SPEC,   _K_SYM,    _L_HM,     _SCN_HM,  \
+        _Z_HM,     _X,        _C,        _V,        _B,        _N,        _M,        _SPC_BSP,  _COM_DOT,  _SL_HM    \
     ),
 
     [LAYER_LEFT_SYMBOL] = LAYOUT( \
@@ -56,14 +57,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _EUR,   _CRT,   _BSL,   _TLD,   _LCB,   xxx,    _ENT,   xxx,    xxx,    xxx     \
     ),
 
-    [LAYER_ARROW] = LAYOUT( \
+    [LAYER_LEFT_ARROW] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    \
         _UPPR,  LADJ,   xxx,    xxx,    xxx,    xxx,    _AR_L,  _AR_D,  _AR_U,  _AR_R,  \
         xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    _HOME,  _PG_D,  _PG_U,  _END    \
     ),
 
-    [LAYER_NUMBER] = LAYOUT( \
+    [LAYER_RIGHT_ARROW] = LAYOUT( \
+     /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
+        xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    \
+        _AR_L,  _AR_D,  _AR_U,  _AR_R,  xxx,    xxx,    xxx,    xxx,    RADJ,   _UPPR,  \
+        _HOME,  _PG_D,  _PG_U,  _END,   xxx,    xxx,    xxx,    xxx,    xxx,    xxx     \
+    ),
+
+    [LAYER_LEFT_NUMBER] = LAYOUT( \
+     /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
+        xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    _7,     _8,     _9,     xxx,    \
+        _UPPR,  LADJ,   xxx,    xxx,    xxx,    xxx,    _4,     _5,     _6,     _0,     \
+        xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    _1,     _2,     _3,     xxx     \
+    ),
+
+    [LAYER_RIGHT_NUMBER] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    _7,     _8,     _9,     xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    \
         _0,     _4,     _5,     _6,     xxx,    xxx,    xxx,    xxx,    RADJ,   _UPPR,  \
@@ -88,13 +103,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case _F_LARR:
-        case _J_RNUM:
+        case _F_SPEC:
+        case _J_SPEC:
             return 180;
 
         /* Important symbol layer keys get short tapping term */
-        case _D_LSYM:   case _K_RSYM:
-        case _COM_DOT:
+        case _D_SYM:   case _K_SYM:
+        case _COM_DOT: case _SPC_BSP:
             return 120;
 
         case _UPPR:
@@ -147,10 +162,8 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
             break;
 
         // Keep capslock on for the following keys
-        case _Q_LGUI: case _P_RGUI:
-        case _A_LCTL: case _S_LSFT: case _D_LSYM: case _F_LARR:
-        case _J_RNUM: case _K_RSYM: case _L_RSFT:
-        case _Z_LALT:
+        case _Q_HM:   case _P_HM:   case _A_HM:  case _S_HM: case _D_SYM:
+        case _F_SPEC: case _J_SPEC: case _K_SYM: case _L_HM: case _Z_HM:
         case _A: case _B: case _C: case _D: case _E: case _F: case _G: case _H:
         case _I: case _J: case _K: case _L: case _M: case _N: case _O: case _P:
         case _Q: case _R: case _S: case _T: case _U: case _V: case _W: case _X:
@@ -161,7 +174,8 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
             break;
 
         // Don't disable capslock when symbol keys are held for layers/mods
-        case _BSPC_CTL:
+        case _SCN_HM:
+        case _SPC_BSP:
             if(is_tapped(record) && is_pressed(record)) {
                 if(caps_word_on){
                     tap_code16(_CAPS);
@@ -189,6 +203,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     process_capslock(keycode, record);
 
     switch(keycode) {
+        case _SPC_BSP:
+            if(is_held(record)){
+                if(is_pressed(record)) {
+                    register_code16(_BSPC);
+                } else {
+                    unregister_code16(_BSPC);
+                }
+                return false;
+            }
+            break;
         case _COM_DOT:
             if(is_held(record)){
                 if(is_pressed(record)) {
