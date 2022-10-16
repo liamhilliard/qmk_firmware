@@ -32,7 +32,6 @@ enum layers {
 /* Other mods */
 #define _UPPR     LT(0, KC_NO)
 #define _DOT_M    LT(0, _DOT)
-#define _SL_M     LT(0, _BSPC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -40,21 +39,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /* ────────── ────────── ────────── ────────── ──────────|────────── ────────── ────────── ────────── ────────── */
         _Q_M,      _W,        _E,        _R,        _T,        _Y,        _U,        _I,        _O,        _P_M,    \
         _A_M,      _S_M,      _D_M,      _F_M,      _G,        _H,        _J_M,      _K_M,      _L_M,      _SCN_M,  \
-        _Z,        _X,        _C_M,      _V,        _B,        _N,        _M,        _SPC_M,    _DOT_M,    _SL_M    \
+        _Z,        _X,        _C_M,      _V,        _B,        _N,        _M,        _SPC_M,    _DOT_M,    _SL      \
     ),
 
 
     [LAYER_LEFT_SYMBOL] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    _TAB,   xxx,    _RSB,   _PLS,   _AMP,   _LAB,   _RAB,   \
-        xxx,    LADJ,   xxx,    _ESC,   _UPPR,  _RPR,   _DQT,   _USD,   _EX,    _QS,    \
-        xxx,    xxx,    xxx,    _DEL,   xxx,    _RCB,   _EQ,    _AST,   _HSH,   _SL     \
+        xxx,    LADJ,   xxx,    _ESC,   _UPPR,  _RPR,   _DQT,   _USD,   _EX,    _BSPC,  \
+        xxx,    xxx,    xxx,    _ENT,   xxx,    _RCB,   _EQ,    _AST,   _HSH,   _AT     \
     ),
 
     [LAYER_RIGHT_SYMBOL] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
-        _GBP,   _BTK,   _PIP,   _UND,   _LSB,   xxx,    _TAB,  xxx,    xxx,    xxx,    \
-        _AT,    _PRC,   _SQT,   _MIN,   _LPR,   _UPPR,  _ESC,  xxx,    RADJ,   _UPPR,  \
+        _GBP,   _BTK,   _PIP,   _UND,   _LSB,   xxx,    xxx,   xxx,    xxx,    xxx,    \
+        _BSPC,  _PRC,   _SQT,   _MIN,   _LPR,   _UPPR,  _ESC,  xxx,    RADJ,   _UPPR,  \
         _EUR,   _CRT,   _BSL,   _TLD,   _LCB,   xxx,    _DEL,  xxx,    xxx,    xxx     \
     ),
 
@@ -107,8 +106,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case _C_M: case _SPC_M:
             return 180;
 
-        case _SL_M:
-            return 130;
+        //case _SL_M:
+        //    return 130;
 
         /* Important symbol layer keys get short tapping term */
         case _DOT_M:
@@ -219,17 +218,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
+        /*
         case _SL_M:
             if(is_held(record)){
                 if(is_pressed(record)) {
-                    register_code16(_ENT);
+                    register_code16(_SL);
                 } else {
-                    unregister_code16(_ENT);
+                    unregister_code16(_SL);
                 }
                 return false;
             }
             break;
+        */
     }
     return true;
 }
+
 
