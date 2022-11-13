@@ -47,13 +47,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    _TAB,   xxx,    _RSB,   _PLS,   _AMP,   _LAB,   _RAB,   \
         xxx,    LADJ,   xxx,    _ESC,   _UPPR,  _RPR,   _DQT,   _USD,   _EX,    _BSPC,  \
-        xxx,    xxx,    xxx,    _ENT,   xxx,    _RCB,   _EQ,    _AST,   _HSH,   _AT     \
+        xxx,    xxx,    xxx,    xxx,    xxx,    _RCB,   _EQ,    _AST,   _HSH,   _AT     \
     ),
 
     [LAYER_RIGHT_SYMBOL] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         _GBP,   _BTK,   _PIP,   _UND,   _LSB,   xxx,    xxx,   xxx,    xxx,    xxx,    \
-        _BSPC,  _PRC,   _SQT,   _MIN,   _LPR,   _UPPR,  _ESC,  xxx,    RADJ,   _UPPR,  \
+        _BSPC,  _PRC,   _SQT,   _MIN,   _LPR,   _UPPR,  _ENT,  xxx,    RADJ,   _UPPR,  \
         _EUR,   _CRT,   _BSL,   _TLD,   _LCB,   xxx,    _DEL,  xxx,    xxx,    xxx     \
     ),
 
