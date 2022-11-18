@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LAYER_LEFT_ARROW] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    \
-        xxx,    LADJ,   xxx,    xxx,   xxx,    xxx,    _AR_L,  _AR_D,  _AR_U,  _AR_R,  \
+        xxx,    LADJ,   xxx,    xxx,    xxx,    xxx,    _AR_L,  _AR_D,  _AR_U,  _AR_R,  \
         xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    _HOME,  _PG_D,  _PG_U,  _END    \
     ),
 
@@ -74,15 +74,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_LEFT_CMD] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
-        xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    _TAB,   xxx,    xxx,    xxx,    \
-        xxx,    xxx,    xxx,    xxx,    xxx,    _UPPR,  _ESC,   _ENT,   _DEL,   _BSPC,  \
-        xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx     \
+        xxx,    xxx,    xxx,    xxx,    xxx,    xxx,     xxx,    xxx,    xxx,    xxx,    \
+        xxx,    xxx,    xxx,    xxx,    xxx,    _UPPR,   _ENT,   xxx,    xxx,    _BSPC,  \
+        xxx,    xxx,    xxx,    xxx,    xxx,    xxx,     _DEL,   xxx,    xxx,    xxx     \
     ),
 
     [LAYER_RIGHT_CMD] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    _TAB,   xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    \
-        _BSPC,  _DEL,   _ENT,   _ESC,   _UPPR,  xxx,    xxx,    xxx,    xxx,    xxx,    \
+        _BSPC,  xxx,    xxx,    _ESC,   _UPPR,  xxx,    xxx,    xxx,    xxx,    xxx,    \
         xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx     \
     ),
 
