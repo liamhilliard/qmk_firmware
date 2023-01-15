@@ -16,3 +16,5 @@ NKRO_ENABLE = no            # Enable N-Key Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
+
+CFLAGS+=-Wno-array-bounds   # Suppress array index warning from platform/avr/suspend.c (2022-05-11)
