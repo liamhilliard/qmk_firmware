@@ -16,6 +16,7 @@ enum layers { QWERTY, LOWER, RAISE, ADJUST };
 #define ADJ       MO(ADJUST)
 
 /* Other mods */
+#define _SFT_M    LSFT_T(_DEL)
 #define _CTL_M    LT(0, _CTL)
 #define _DOT_M    LT(0, _DOT)
 #define _UPPR     LT(0, KC_NO)
@@ -31,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _Q_M,   _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,     _P_M,    \
         _A,     _S,     _D,     _F,     _G,     _H,     _J,     _K,     _L,     _SCN,    \
         _Z,     _X,     _C,     _V,     _B,     _N,     _M,     _SPC,   _DOT_M, _SL,     \
-                                _CTL_M, LWR,    RSE,    _SFT \
+                                _CTL_M, LWR,    RSE,    _SFT_M \
     ),
 
     [LOWER] = LAYOUT( \
@@ -39,15 +40,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _TAB,   _BTK_M, _PIP,   _UND,   _LSB,   xxx,    xxx,    xxx,    xxx,    xxx,    \
         _ESC,   _EX,    _SQT,   _MIN,   _LPR,   xxx,    _AR_L,  _AR_D,  _AR_U,  _AR_R,  \
         _UPPR,  _AT,    _BSL,   _TLD,   _LCB,   xxx,    _HOME,  _PG_D,  _PG_U,  _END,   \
-                                TRNS,   TRNS,   TRNS,   ADJ \
+                                xxx,    TRNS,   _SFT,   _CTL_M \
     ),
 
     [RAISE] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    _7,     _8,     _9,     xxx,    _RSB,   _PLS_M, _AMP_M, _LAB,   _DEL,   \
-        _0,     _4,     _5,     _6,     xxx,    _RPR,   _DQT,   _USD,   _RAB,   xxx,    \
+        _0,     _4,     _5,     _6,     xxx,    _RPR,   _DQT,   _USD,   _RAB,   _BSPC,  \
         xxx,    _1,     _2,     _3,     xxx,    _RCB,   _EQ,    _AST_M, _HSH,   _ENT,   \
-                                ADJ,    TRNS,   TRNS,   TRNS \
+                                _CTL_M, _SFT,   TRNS,   ADJ \
     ),
 
     [ADJUST] = LAYOUT( \
@@ -55,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _F1,    _F2,    _F3,    _F4,    _F5,    _F6,    _F7,    _F8,    _F9,    _F10,   \
         xxx,    _V_VD,  _V_VU,  _V_P,   _F11,   _F12,   _V_P,   _V_VD,  _V_VU,  xxx,    \
         RESET,  xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    RESET,  \
-                                TRNS,   TRNS,   TRNS,   TRNS \
+                                _CTL_M, _SFT,   xxx,    TRNS \
     )
 
 };
@@ -146,11 +147,11 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
         case _1: case _2: case _3: case _4: case _5: case _6: case _7: case _8:
         case _9: case _0:
         case _UND: case _MIN: case _BSPC: case _DEL:
+        case RSE: case _SFT_M:
             break;
 
         // Don't disable capslock when symbol keys are held for layers/mods
-        /*
-        case SL_M:
+        case LWR:
             if(is_tapped(record) && is_pressed(record)) {
                 if(caps_word_on){
                     tap_code16(_CAPS);
@@ -159,7 +160,6 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
                 }
             }
             break;
-        */
 
         // Disable capslock for all other key presses
         default:
@@ -175,22 +175,6 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
 
 static uint16_t oneshot_timer; //static is persisted between function calls
 
-bool oneshot_tap(keyrecord_t *record, uint16_t mod, uint16_t kc){
-    if(is_held(record)){
-        if(is_pressed(record)){
-            register_code16(kc);
-        } else {
-            unregister_code16(kc);
-        }
-    } else {
-        if(is_pressed(record)){
-            oneshot_timer = timer_read32();
-            set_oneshot_mods(get_oneshot_mods() | MOD_BIT(mod));
-        }
-    }
-    return false;
-}
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     /* Custom handlers that don't stop key processing */
     process_capslock(keycode, record);
@@ -202,21 +186,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
    switch(keycode) {
         case _CTL_M:
-            return oneshot_tap(record, _CTL, _ALT);
-        /*
-        case LWR:
-            if(is_pressed(record) && is_tapped(record)){
-                oneshot_timer = timer_read32();
-                set_oneshot_mods(get_oneshot_mods() | MOD_BIT(KC_LSFT));
+            if(is_held(record)){
+                if(is_pressed(record)){
+                    register_code16(_ALT);
+                } else {
+                    unregister_code16(_ALT);
+                }
+            } else {
+                if(is_pressed(record)){
+                    oneshot_timer = timer_read32();
+                    set_oneshot_mods(get_oneshot_mods() | MOD_BIT(_CTL));
+                }
             }
-            break;
-        case RSE:
-            if(is_pressed(record) && is_tapped(record)){
-                oneshot_timer = timer_read32();
-                set_oneshot_mods(get_oneshot_mods() | MOD_BIT(KC_LCTL));
-            }
-            break;
-        */
+            return false;
         case _DOT_M:
             if(is_held(record)){
                 if(is_pressed(record)) {
