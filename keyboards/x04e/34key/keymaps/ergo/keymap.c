@@ -7,6 +7,9 @@ enum layers { QWERTY, LOWER, RAISE, ADJUST };
 /* --- Row 1 --- */
 #define _Q_M      LGUI_T(_Q)
 #define _P_M      LGUI_T(_P)
+/* --- Row 2 --- */
+/* --- Row 3 --- */
+#define _Z_M      LCTL_T(_Z)
 /* --- Row 4 --- */
 #define LWR       LT(LOWER, _SPC)
 #define RSE       LT(RAISE, _BSPC)
@@ -31,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         _Q_M,   _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,     _P_M,    \
         _A,     _S,     _D,     _F,     _G,     _H,     _J,     _K,     _L,     _SCN,    \
-        _Z,     _X,     _C,     _V,     _B,     _N,     _M,     _SPC,   _DOT_M, _SL,     \
+        _Z_M,   _X,     _C,     _V,     _B,     _N,     _M,     _SPC,   _DOT_M, _SL,     \
                                 _CTL_M, LWR,    RSE,    _SFT_M \
     ),
 
@@ -140,6 +143,7 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
             break;
 
         // Keep capslock on for the following keys
+        case _Z_M:
         case _A: case _B: case _C: case _D: case _E: case _F: case _G: case _H:
         case _I: case _J: case _K: case _L: case _M: case _N: case _O: case _P:
         case _Q: case _R: case _S: case _T: case _U: case _V: case _W: case _X:
