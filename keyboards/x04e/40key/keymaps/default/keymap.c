@@ -22,7 +22,7 @@ enum layers { QWERTY, LOWER, RAISE, ADJUST };
 
 /* Other mods */
 #define ADJ       MO(ADJUST)
-//#define _DOT_M    LT(0, _DOT)
+#define _DOT_M    LT(0, _DOT)
 #define _UPPR     LT(0, KC_NO)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── ─────── */
         _TAB,   _Q_M,   _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,     _P_M,   _DEL,   \
         _ESC,   _A_M,   _S_M,   _D,     _F,     _G,     _H,     _J,     _K,     _L_M,   _SCN_M, _BSPC,  \
-        _UPPR,  _Z_M,   _X,     _C,     _V,     _B,     _N,     _M,     _COM,   _DOT,   _SL_M,  _ENT,   \
+        _UPPR,  _Z_M,   _X,     _C,     _V,     _B,     _N,     _M,     _SPC,   _DOT_M, _SL_M,  _ENT,   \
                                         xxx,    LWR,    RSE,    xxx \
     ),
 
@@ -64,8 +64,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         /* Important symbol layer keys get short tapping term */
-        //case _DOT_M:
-        //    return 120;
+        case _DOT_M:
+            return 120;
 
         case _UPPR:
             return 200;
@@ -182,7 +182,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }*/
 
     switch(keycode) {
-        // Custom key behaviours
+        case _DOT_M:
+            if(is_held(record)){
+                if(is_pressed(record)) {
+                    register_code16(_COM);
+                } else {
+                    unregister_code16(_COM);
+                }
+                return false;
+            }
+            break;
     }
     return true;
 }
