@@ -5,8 +5,7 @@
 enum layers {
     LAYER_QWERTY,
     LAYER_LEFT_SYMBOL,  LAYER_RIGHT_SYMBOL,
-    LAYER_LEFT_ARROW,   LAYER_RIGHT_ARROW,
-    LAYER_LEFT_NUMBER,  LAYER_RIGHT_NUMBER,
+    LAYER_LEFT_ARROW,   LAYER_RIGHT_NUMBER,
     LAYER_LEFT_ADJUST,  LAYER_RIGHT_ADJUST
 };
 
@@ -17,70 +16,75 @@ enum layers {
 #define _Q_M      LGUI_T(_Q)
 #define _P_M      LGUI_T(_P)
 /* --- */
-#define _A_M      LALT_T(_A)
-#define _S_M      LCTL_T(_S)
-#define _D_M      LT(LAYER_LEFT_SYMBOL, _D)
-#define _F_M      LSFT_T(_F)
-#define _J_M      LSFT_T(_J)
-#define _K_M      LT(LAYER_RIGHT_SYMBOL, _K)
-#define _L_M      LCTL_T(_L)
-#define _SCN_M    LALT_T(_SCN)
+#define _A_M      LCTL_T(_A)
+#define _S_M      LALT_T(_S)
+#define _D_M      LSFT_T(_D)
+#define _F_M      LT(LAYER_LEFT_ARROW, _F)
+#define _J_M      LT(LAYER_RIGHT_NUMBER, _J)
+#define _K_M      LSFT_T(_K)
+#define _L_M      LALT_T(_L)
+#define _SCN_M    LCTL_T(_SCN)
 /* --- */
-#define _C_M      LT(LAYER_LEFT_ARROW, _C)
-#define _SPC_M    LT(LAYER_RIGHT_NUMBER, _SPC)
+#define _V_M      LT(LAYER_LEFT_SYMBOL, _V)
+#define _M_M      LT(LAYER_RIGHT_SYMBOL, _M)
+#define _SPC_M    LT(0, _SPC)
+#define _BSPC_M   LT(0, _BSPC)
 
 /* Other mods */
 #define _UPPR     LT(0, KC_NO)
-#define _DOT_M    LT(0, _DOT)
+#define _BTK_M    LT(0, _BTK)
+#define _PLS_M    LT(0, _PLS)
+#define _AMP_M    LT(0, _AMP)
+#define _AST_M    LT(0, _AST)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_QWERTY] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
-        _Q_M,   _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,     _P_M,   \
-        _A_M,   _S_M,   _D_M,   _F_M,   _G,     _H,     _J_M,   _K_M,   _L_M,   _SCN_M, \
-        _Z,     _X,     _C_M,   _V,     _B,     _N,     _M,     _SPC_M, _DOT_M, _SL     \
+        _Q_M,   _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,     _P_M,    \
+        _A_M,   _S_M,   _D_M,   _F_M,   _G,     _H,     _J_M,   _K_M,   _L_M,   _SCN_M,  \
+        _Z,     _X,     _C,     _V_M,   _B,     _N,     _M_M,   _SPC_M, _BSPC_M,_SL      \
     ),
 
     [LAYER_LEFT_SYMBOL] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
-        xxx,    xxx,    xxx,    _TAB,   xxx,    _RSB,   _PLS,   _AMP,   _LAB,   _RAB,   \
-        xxx,    LADJ,   TRNS,   _BSPC,  _UPPR,  _RPR,   _DQT,   _USD,   _EX,    xxx,    \
-        xxx,    xxx,    xxx,    _ESC,   xxx,    _RCB,   _EQ,    _AST,   _HSH,   _AT     \
+        xxx,    xxx,    xxx,    xxx,    xxx,    _RAB,   _UND,   _AMP_M, _AST_M, _DEL,    \
+        xxx,    xxx,    xxx,    xxx,    xxx,    _LAB,   _MIN,   _DQT,   _USD,   _BSPC,   \
+        xxx,    xxx,    xxx,    xxx,    xxx,    _EX,    _PIP,   _TLD,   _HSH,   _ENT     \
     ),
 
     [LAYER_RIGHT_SYMBOL] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
-        _GBP,   _BTK,   _PIP,   _UND,   _LSB,   xxx,    _DEL,  xxx,    xxx,    xxx,    \
-        xxx,    _PRC,   _SQT,   _MIN,   _LPR,   _UPPR,  _BSPC, TRNS,   RADJ,   _UPPR,  \
-        _EUR,   _CRT,   _BSL,   _TLD,   _LCB,   xxx,    _ENT,  xxx,    xxx,    xxx     \
+        _TAB,   _BTK_M, _PLS_M, _LSB,   _RSB,   xxx,    xxx,   xxx,    xxx,    xxx,    \
+        _ESC,   _EQ,    _SQT,   _LPR,   _RPR,   xxx,    xxx,   xxx,    xxx,    xxx,    \
+        _UPPR,  _AT,    _BSL,   _LCB,   _RCB,   xxx,    xxx,   xxx,    xxx,    xxx     \
     ),
 
     [LAYER_LEFT_ARROW] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    \
-        xxx,    LADJ,   xxx,    xxx,    xxx,    xxx,    _AR_L,  _AR_D,  _AR_U,  _AR_R,  \
-        xxx,    xxx,    TRNS,   xxx,    xxx,    xxx,    _HOME,  _PG_D,  _PG_U,  _END    \
+        xxx,    xxx,    LADJ,   xxx,    xxx,    xxx,    _AR_L,  _AR_D,  _AR_U,  _AR_R,  \
+        xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    _HOME,  _PG_D,  _PG_U,  _END    \
     ),
 
     [LAYER_RIGHT_NUMBER] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    _7,     _8,     _9,     xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    \
-        _0,     _4,     _5,     _6,     xxx,    xxx,    xxx,    xxx,    RADJ,   xxx,    \
-        xxx,    _1,     _2,     _3,     xxx,    xxx,    xxx,    TRNS,   xxx,    xxx     \
+        _0,     _4,     _5,     _6,     xxx,    xxx,    xxx,    RADJ,   xxx,    xxx,    \
+        xxx,    _1,     _2,     _3,     xxx,    xxx,    xxx,    xxx,    xxx,    xxx     \
     ),
 
     [LAYER_LEFT_ADJUST] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         xxx,    xxx,    xxx,    xxx,    xxx,    _F6,    _F7,    _F8,    _F9,    _F10,   \
-        xxx,    TRNS,   xxx,    xxx,    xxx,    _F12,   _V_P,   _V_VD,  _V_VU,  xxx,    \
+        xxx,    xxx,    TRNS,   xxx,    xxx,    _F12,   _V_P,   _V_VD,  _V_VU,  xxx,    \
         RESET,  xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx     \
     ),
 
     [LAYER_RIGHT_ADJUST] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
         _F1,    _F2,    _F3,    _F4,    _F5,    xxx,    xxx,    xxx,    xxx,    xxx,    \
-        xxx,    _V_VD,  _V_VU,  _V_P,   _F11,   xxx,    xxx,    xxx,    TRNS,   xxx,    \
+        xxx,    _V_VD,  _V_VU,  _V_P,   _F11,   xxx,    xxx,    TRNS,   xxx,    xxx,    \
         xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    RESET   \
     )
 
@@ -88,19 +92,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case _C_M: case _SPC_M:
+        case _BTK_M: case _PLS_M:
+        case _AMP_M: case _AST_M:
             return 180;
 
-        //case _SL_M:
-        //    return 130;
-
         /* Important symbol layer keys get short tapping term */
-        case _DOT_M:
-        case _D_M: case _K_M:
+        case _M_M: case _V_M:
+        case _F_M: case _J_M:
+        case _SPC_M: case _BSPC_M:
             return 120;
 
         case _UPPR:
-            return 200;
+            return 300;
 
         default:
             return TAPPING_TERM;
@@ -151,7 +154,7 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
         // Keep capslock on for the following keys
         case _Q_M: case _P_M:
         case _A_M: case _S_M: case _D_M: case _F_M: case _J_M: case _K_M: case _L_M:
-        case _C_M:
+        case _V_M: case _M_M:
         case _A: case _B: case _C: case _D: case _E: case _F: case _G: case _H:
         case _I: case _J: case _K: case _L: case _M: case _N: case _O: case _P:
         case _Q: case _R: case _S: case _T: case _U: case _V: case _W: case _X:
@@ -163,7 +166,6 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
 
         // Don't disable capslock when symbol keys are held for layers/mods
         case _SCN_M:
-        case _SPC_M:
             if(is_tapped(record) && is_pressed(record)) {
                 if(caps_word_on){
                     tap_code16(_CAPS);
@@ -191,8 +193,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     process_capslock(keycode, record);
 
     switch(keycode) {
-
-        case _DOT_M:
+        case _SPC_M:
             if(is_held(record)){
                 if(is_pressed(record)) {
                     register_code16(_COM);
@@ -201,6 +202,81 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
                 return false;
             }
+            break;
+        case _BSPC_M:
+            if(is_held(record)){
+                if(is_pressed(record)) {
+                    register_code16(_DOT);
+                } else {
+                    unregister_code16(_DOT);
+                }
+                return false;
+            }
+            break;
+
+        case _BTK_M:
+            if(is_tapped(record)){
+                if(is_pressed(record)) {
+                    register_code16(_BTK);
+                } else {
+                    unregister_code16(_BTK);
+                }
+            } else {
+                if(is_pressed(record)) {
+                    register_code16(_GBP);
+                } else {
+                    unregister_code16(_GBP);
+                }
+            }
+            return false;
+            break;
+        case _PLS_M:
+            if(is_tapped(record)){
+                if(is_pressed(record)) {
+                    register_code16(_PLS);
+                } else {
+                    unregister_code16(_PLS);
+                }
+            } else {
+                if(is_pressed(record)) {
+                    register_code16(_CRT);
+                } else {
+                    unregister_code16(_CRT);
+                }
+            }
+            return false;
+            break;
+        case _AMP_M:
+            if(is_tapped(record)){
+                if(is_pressed(record)) {
+                    register_code16(_AMP);
+                } else {
+                    unregister_code16(_AMP);
+                }
+            } else {
+                if(is_pressed(record)) {
+                    register_code16(_PRC);
+                } else {
+                    unregister_code16(_PRC);
+                }
+            }
+            return false;
+            break;
+        case _AST_M:
+            if(is_tapped(record)){
+                if(is_pressed(record)) {
+                    register_code16(_AST);
+                } else {
+                    unregister_code16(_AST);
+                }
+            } else {
+                if(is_pressed(record)) {
+                    register_code16(_EUR);
+                } else {
+                    unregister_code16(_EUR);
+                }
+            }
+            return false;
             break;
     }
     return true;

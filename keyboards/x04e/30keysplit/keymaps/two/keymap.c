@@ -5,8 +5,7 @@
 enum layers {
     LAYER_QWERTY,
     LAYER_LEFT_SYMBOL,  LAYER_RIGHT_SYMBOL,
-    LAYER_LEFT_ARROW,   LAYER_RIGHT_ARROW,
-    LAYER_LEFT_NUMBER,  LAYER_RIGHT_NUMBER,
+    LAYER_LEFT_ARROW,   LAYER_RIGHT_NUMBER,
     LAYER_LEFT_ADJUST,  LAYER_RIGHT_ADJUST
 };
 
@@ -36,52 +35,53 @@ enum layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_QWERTY] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
-        _Q_M,   _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,     _P_M,   \
-        _A_M,   _S_M,   _D_M,   _F_M,   _G,     _H,     _J_M,   _K_M,   _L_M,   _SCN_M, \
-        _Z,     _X,     _C_M,   _V,     _B,     _N,     _M,     _SPC_M, _DOT_M, _SL     \
+     /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ───────  ─────── ─────── */
+        _TAB,   _Q_M,   _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,      _P_M,   _DEL,   \
+        _ESC,   _A_M,   _S_M,   _D_M,   _F_M,   _G,     _H,     _J_M,   _K_M,   _L_M,    _SCN_M, _BSPC,  \
+        _UPPR,  _Z,     _X,     _C_M,   _V,     _B,     _N,     _M,     _SPC_M, _DOT_M,  _SL,    _ENT    \
     ),
 
+
     [LAYER_LEFT_SYMBOL] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
-        xxx,    xxx,    xxx,    _TAB,   xxx,    _RSB,   _PLS,   _AMP,   _LAB,   _RAB,   \
-        xxx,    LADJ,   TRNS,   _BSPC,  _UPPR,  _RPR,   _DQT,   _USD,   _EX,    xxx,    \
-        xxx,    xxx,    xxx,    _ESC,   xxx,    _RCB,   _EQ,    _AST,   _HSH,   _AT     \
+     /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ───────  ─────── ─────── */
+        xxx,    xxx,    xxx,    xxx,    _TAB,    xxx,    _RSB,   _PLS,   _AMP,   _LAB,    _AT,     xxx,   \
+        xxx,    xxx,    LADJ,   xxx,    _ESC,    xxx,    _RPR,   _DQT,   _USD,   _RAB,    _BSPC,   xxx,   \
+        xxx,    xxx,    xxx,    xxx,    xxx,     xxx,    _RCB,   _EQ,    _AST,   _HSH,    _EX,     xxx    \
     ),
 
     [LAYER_RIGHT_SYMBOL] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
-        _GBP,   _BTK,   _PIP,   _UND,   _LSB,   xxx,    _DEL,  xxx,    xxx,    xxx,    \
-        xxx,    _PRC,   _SQT,   _MIN,   _LPR,   _UPPR,  _BSPC, TRNS,   RADJ,   _UPPR,  \
-        _EUR,   _CRT,   _BSL,   _TLD,   _LCB,   xxx,    _ENT,  xxx,    xxx,    xxx     \
+     /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ───────  ─────── ─────── */
+        xxx,    _GBP,   _BTK,   _PIP,   _UND,   _LSB,   xxx,    xxx,    xxx,    xxx,     xxx,    xxx,    \
+        xxx,    _BSPC,  _PRC,   _SQT,   _MIN,   _LPR,   xxx,    _ENT,   xxx,    RADJ,    xxx,    xxx,    \
+        xxx,    _EUR,   _CRT,   _BSL,   _TLD,   _LCB,   xxx,    _DEL,   xxx,    xxx,     xxx,    xxx     \
     ),
 
     [LAYER_LEFT_ARROW] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
-        xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    \
-        xxx,    LADJ,   xxx,    xxx,    xxx,    xxx,    _AR_L,  _AR_D,  _AR_U,  _AR_R,  \
-        xxx,    xxx,    TRNS,   xxx,    xxx,    xxx,    _HOME,  _PG_D,  _PG_U,  _END    \
+     /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ───────  ─────── ─────── */
+        xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,     xxx,    xxx,    \
+        xxx,    xxx,    xxx,    LADJ,   xxx,    xxx,    xxx,    _AR_L,  _AR_D,  _AR_U,   _AR_R,  xxx,    \
+        xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    _HOME,  _PG_D,  _PG_U,   _END,   xxx     \
     ),
 
     [LAYER_RIGHT_NUMBER] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
-        xxx,    _7,     _8,     _9,     xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    \
-        _0,     _4,     _5,     _6,     xxx,    xxx,    xxx,    xxx,    RADJ,   xxx,    \
-        xxx,    _1,     _2,     _3,     xxx,    xxx,    xxx,    TRNS,   xxx,    xxx     \
+     /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ───────  ─────── ─────── */
+        xxx,    xxx,    _7,     _8,     _9,     xxx,    xxx,    xxx,    xxx,    xxx,     xxx,    xxx,    \
+        xxx,    _0,     _4,     _5,     _6,     xxx,    xxx,    xxx,    xxx,    RADJ,    xxx,    xxx,    \
+        xxx,    xxx,    _1,     _2,     _3,     xxx,    xxx,    xxx,    xxx,    xxx,     xxx,    xxx     \
     ),
 
     [LAYER_LEFT_ADJUST] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
-        xxx,    xxx,    xxx,    xxx,    xxx,    _F6,    _F7,    _F8,    _F9,    _F10,   \
-        xxx,    TRNS,   xxx,    xxx,    xxx,    _F12,   _V_P,   _V_VD,  _V_VU,  xxx,    \
-        RESET,  xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx     \
+     /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ───────  ─────── ─────── */
+        xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    _F6,    _F7,    _F8,    _F9,     _F10,   xxx,    \
+        xxx,    xxx,    TRNS,   TRNS,   xxx,    xxx,    _F12,   _V_P,   _V_VD,  _V_VU,   xxx,    xxx,    \
+        xxx,    RESET,  xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,     xxx,    xxx     \
     ),
 
     [LAYER_RIGHT_ADJUST] = LAYOUT( \
-     /* ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── */
-        _F1,    _F2,    _F3,    _F4,    _F5,    xxx,    xxx,    xxx,    xxx,    xxx,    \
-        xxx,    _V_VD,  _V_VU,  _V_P,   _F11,   xxx,    xxx,    xxx,    TRNS,   xxx,    \
-        xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    RESET   \
+     /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ───────  ─────── ─────── */
+        xxx,    _F1,    _F2,    _F3,    _F4,    _F5,    xxx,    xxx,    xxx,    xxx,     xxx,    xxx,    \
+        xxx,    xxx,    _V_VD,  _V_VU,  _V_P,   _F11,   xxx,    xxx,    TRNS,   TRNS,    xxx,    xxx,    \
+        xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,     RESET,  xxx     \
     )
 
 };
@@ -90,9 +90,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case _C_M: case _SPC_M:
             return 180;
-
-        //case _SL_M:
-        //    return 130;
 
         /* Important symbol layer keys get short tapping term */
         case _DOT_M:
