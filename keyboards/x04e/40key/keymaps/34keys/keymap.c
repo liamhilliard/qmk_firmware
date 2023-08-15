@@ -42,8 +42,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LOWER] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── ─────── */
-        ___,    _TAB,   _BTK_M, _PIP,   _UND,   _LSB,   xxx,    xxx,    xxx,    xxx,    xxx,    ___,    \
-        ___,    _ESC,   _EX,    _SQT,   _MIN,   _LPR,   xxx,    _AR_L,  _AR_D,  _AR_U,  _AR_R,  ___,    \
+        ___,    _TAB,   _BTK_M, _PIP,   _UND,   _LSB,   xxx,    xxx,    _AR_U,  xxx,    xxx,    ___,    \
+        ___,    _ESC,   _EX,    _SQT,   _MIN,   _LPR,   xxx,    _AR_L,  _AR_D,  _AR_R,  xxx,    ___,    \
         ___,    _UPPR,  _AT_M,  _BSL,   _TLD,   _LCB,   xxx,    _HOME,  _PG_D,  _PG_U,  _END,   ___,    \
                                         _BSPC,  TRNS,   ADJ,    _ENT \
     ),
