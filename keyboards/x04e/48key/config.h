@@ -10,7 +10,7 @@
 #define PRODUCT_ID   0x0000
 #define DEVICE_VER   0x0001
 #define MANUFACTURER x04e
-#define PRODUCT      x04e 40-Key Keyboard
+#define PRODUCT      x04e 48-Key Keyboard
 
 /* key matrix size */
 #define MATRIX_ROWS 4

@@ -37,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         xxx,    _Q_M,   _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,     _P_M,   xxx,    \
         xxx,    _A_M,   _S_M,   _D_M,   _F,     _G,     _H,     _J,     _K_M,   _L_M,   _SCN_M, xxx,    \
         xxx,    _Z,     _X,     _C,     _V,     _B,     _N,     _M,     _SPC,   _DOT_M, _SL,    xxx,    \
-                                        _BSPC,  LWR,    RSE,    _ENT \
+        xxx,    xxx,    xxx,    xxx,    _BSPC,  LWR,    RSE,    _ENT,   xxx,    xxx,    xxx,    xxx     \
     ),
 
     [LOWER] = LAYOUT( \
@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ___,    _TAB,   _BTK_M, _PIP,   _UND,   _LSB,   xxx,    xxx,    xxx,    xxx,    xxx,    ___,    \
         ___,    _ESC,   _EX,    _SQT,   _MIN,   _LPR,   xxx,    _AR_L,  _AR_D,  _AR_U,  _AR_R,  ___,    \
         ___,    _UPPR,  _AT_M,  _BSL,   _TLD,   _LCB,   xxx,    _HOME,  _PG_D,  _PG_U,  _END,   ___,    \
-                                        _BSPC,  TRNS,   ADJ,    _ENT \
+        xxx,    xxx,    xxx,    xxx,    _BSPC,  TRNS,   ADJ,    _ENT,   xxx,    xxx,    xxx,    xxx     \
     ),
 
     [RAISE] = LAYOUT( \
@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ___,    xxx,    _7,     _8,     _9,     xxx,    _RSB,   _PLS,   _AMP,   _LAB_M, _BSPC,  ___,    \
         ___,    _0,     _4,     _5,     _6,     xxx,    _RPR,   _DQT,   _USD,   _RAB,   _ENT,   ___,    \
         ___,    xxx,    _1,     _2,     _3,     xxx,    _RCB,   _EQ,    _AST,   _HSH_M, _DEL,   ___,    \
-                                        _BSPC,  ADJ,    TRNS,   _ENT \
+        xxx,    xxx,    xxx,    xxx,    _BSPC,  ADJ,    TRNS,   _ENT,   xxx,    xxx,    xxx,    xxx     \
     ),
 
     [ADJUST] = LAYOUT( \
@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ___,    _F1,    _F2,    _F3,    _F4,    _F5,    _F6,    _F7,    _F8,    _F9,    _F10,   ___,    \
         ___,    xxx,    _V_VD,  _V_VU,  _V_P,   _F11,   _F12,   _V_P,   _V_VD,  _V_VU,  xxx,    ___,    \
         ___,    RESET,  xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    RESET,  ___,    \
-                                        xxx,    TRNS,   TRNS,   xxx \
+        xxx,    xxx,    xxx,    xxx,    xxx,    TRNS,   TRNS,   xxx,    xxx,    xxx,    xxx,    xxx     \
     )
 
 };
