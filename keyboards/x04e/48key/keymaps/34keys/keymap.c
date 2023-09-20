@@ -16,8 +16,10 @@ enum layers { QWERTY, LOWER, RAISE, ADJUST };
 #define _SCN_M    LALT_T(_SCN)
 /* --- Row 3 --- */
 /* --- Row 4 --- */
+#define THM1      LSFT_T(_DEL)
 #define LWR       LT(LOWER, _SPC)
 #define RSE       LT(RAISE, _BSPC)
+#define THM4      LSFT_T(_ENT)
 /**/
 
 /* Other mods */
@@ -35,9 +37,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [QWERTY] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── ─────── */
         xxx,    _Q_M,   _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,     _P_M,   xxx,    \
-        xxx,    _A_M,   _S_M,   _D_M,   _F,     _G,     _H,     _J,     _K_M,   _L_M,   _SCN_M, xxx,    \
+        xxx,    _A_M,   _S_M,   _D,     _F,     _G,     _H,     _J,     _K,     _L_M,   _SCN_M, xxx,    \
         xxx,    _Z,     _X,     _C,     _V,     _B,     _N,     _M,     _SPC,   _DOT_M, _SL,    xxx,    \
-        xxx,    xxx,    xxx,    xxx,    _BSPC,  LWR,    RSE,    _ENT,   xxx,    xxx,    xxx,    xxx     \
+        xxx,    xxx,    xxx,    xxx,    THM1,   LWR,    RSE,    THM4,   xxx,    xxx,    xxx,    xxx     \
     ),
 
     [LOWER] = LAYOUT( \
