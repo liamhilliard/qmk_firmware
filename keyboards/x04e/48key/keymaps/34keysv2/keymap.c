@@ -2,6 +2,13 @@
 #include <print.h>
 #include <shortcuts.h>
 
+bool is_pressed(keyrecord_t *record);
+bool is_released(keyrecord_t *record);
+bool is_tapped(keyrecord_t *record);
+bool is_held(keyrecord_t *record);
+bool tap_hold(keyrecord_t *record, uint16_t tap_keycode, uint16_t hold_keycode);
+void process_capslock(uint16_t keycode, keyrecord_t *record);
+
 enum layers { QWERTY, NUMARR, SYMBOL, ADJUST };
 
 /* --- Row 1 --- */
@@ -71,14 +78,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         /* Important symbol layer keys get short tapping term */
         case _UPPR:
             return 200;
-
-        case _BTK_M: case _AT_M:
-        case _LAB_M: case _HSH_M:
+        case _BTK_M: case _AT_M: case _LAB_M: case _HSH_M:
             return 180;
-
         case LTHM2: case RTHM2:
             return 180;
-
         default:
             return TAPPING_TERM;
     }
@@ -86,6 +89,26 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 static bool caps_on = false; /* Tracks state of CAPSLOCK */
 static bool caps_word_on = false; /* Tracks whether caps word is active */
+
+//static uint16_t oneshot_timer; //static is persisted between function calls
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    /* Custom handlers that don't stop key processing */
+    process_capslock(keycode, record);
+
+    // Time out oneshot mods
+    /*if(timer_elapsed(oneshot_timer) > 1500){
+        clear_oneshot_mods();
+    }*/
+
+    switch(keycode) {
+        case _BTK_M: return tap_hold(record, _BTK,_GBP);
+        case _AT_M:  return tap_hold(record, _AT, _CRT);
+        case _LAB_M: return tap_hold(record, _LAB, _PRC);
+        case _HSH_M: return tap_hold(record, _HSH, _EUR);
+    }
+    return true;
+}
 
 bool is_pressed(keyrecord_t *record) { return record->event.pressed; }
 bool is_released(keyrecord_t *record) { return !is_pressed(record); }
@@ -173,81 +196,3 @@ void process_capslock(uint16_t keycode, keyrecord_t *record){
             }
     }
 }
-
-//static uint16_t oneshot_timer; //static is persisted between function calls
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    /* Custom handlers that don't stop key processing */
-    process_capslock(keycode, record);
-
-    // Time out oneshot mods
-    /*if(timer_elapsed(oneshot_timer) > 1500){
-        clear_oneshot_mods();
-    }*/
-
-    switch(keycode) {
-        case _BTK_M:
-            if(is_tapped(record)){
-                if(is_pressed(record)) {
-                    register_code16(_BTK);
-                } else {
-                    unregister_code16(_BTK);
-                }
-            } else {
-                if(is_pressed(record)) {
-                    register_code16(_GBP);
-                } else {
-                    unregister_code16(_GBP);
-                }
-            }
-            return false;
-        case _AT_M:
-            if(is_tapped(record)){
-                if(is_pressed(record)) {
-                    register_code16(_AT);
-                } else {
-                    unregister_code16(_AT);
-                }
-            } else {
-                if(is_pressed(record)) {
-                    register_code16(_CRT);
-                } else {
-                    unregister_code16(_CRT);
-                }
-            }
-            return false;
-        case _LAB_M:
-            if(is_tapped(record)){
-                if(is_pressed(record)) {
-                    register_code16(_LAB);
-                } else {
-                    unregister_code16(_LAB);
-                }
-            } else {
-                if(is_pressed(record)) {
-                    register_code16(_PRC);
-                } else {
-                    unregister_code16(_PRC);
-                }
-            }
-            return false;
-        case _HSH_M:
-            if(is_tapped(record)){
-                if(is_pressed(record)) {
-                    register_code16(_HSH);
-                } else {
-                    unregister_code16(_HSH);
-                }
-            } else {
-                if(is_pressed(record)) {
-                    register_code16(_EUR);
-                } else {
-                    unregister_code16(_EUR);
-                }
-            }
-            return false;
-
-    }
-    return true;
-}
-
