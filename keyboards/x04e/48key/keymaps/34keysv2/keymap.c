@@ -16,10 +16,10 @@ enum layers { QWERTY, LOWER, RAISE, ADJUST };
 #define _Z_M      LCTL_T(_Z)
 #define _SL_M     LCTL_T(_SL)
 /* --- Row 4 --- */
-#define THM1      LSFT_T(_DEL)
-#define THM2      LT(LOWER, _SPC)
-#define THM3      LT(RAISE, _BSPC)
-#define THM4      LSFT_T(_ENT)
+#define THM1      LT(LOWER, _DEL)
+#define THM2      LSFT_T(_SPC)
+#define THM3      LSFT_T(_BSPC)
+#define THM4      LT(RAISE, _ENT)
 /**/
 
 /* Other mods */
@@ -72,7 +72,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case _LAB_M: case _HSH_M:
         case THM1: case THM2:
         case THM3: case THM4:
-            return 180;
+            return 120;
 
         default:
             return TAPPING_TERM;
