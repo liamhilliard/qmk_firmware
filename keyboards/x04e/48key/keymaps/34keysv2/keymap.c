@@ -24,7 +24,6 @@ enum layers { QWERTY, LOWER, RAISE, ADJUST };
 
 /* Other mods */
 #define ADJ       MO(ADJUST)
-
 #define _BTK_M    LT(0, _BTK)
 #define _AT_M     LT(0, _AT)
 #define _LAB_M    LT(0, _LAB)
@@ -42,25 +41,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LOWER] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── ─────── */
-        ___,    xxx,    _7,     _8,     _9,     xxx,    _RSB,   _PLS,   _AMP,   _LAB_M, _BSPC,  ___,    \
-        ___,    _0,     _4,     _5,     _6,     xxx,    _RPR,   _DQT,   _USD,   _RAB,   _ENT,   ___,    \
-        ___,    xxx,    _1,     _2,     _3,     xxx,    _RCB,   _EQ,    _AST,   _HSH_M, _DEL,   ___,    \
+        xxx,    xxx,    _7,     _8,     _9,     _TAB,   _RSB,   _PLS,   _AMP,   _LAB_M, _BSPC,  xxx,    \
+        xxx,    _0,     _4,     _5,     _6,     _ESC,   _RPR,   _DQT,   _USD,   _RAB,   _ENT,   xxx,    \
+        xxx,    xxx,    _1,     _2,     _3,     xxx,    _RCB,   _EQ,    _AST,   _HSH_M, _DEL,   xxx,    \
         xxx,    xxx,    xxx,    xxx,    TRNS,   TRNS,   ADJ,    ADJ,    xxx,    xxx,    xxx,    xxx     \
     ),
 
     [RAISE] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── ─────── */
-        ___,    _TAB,   _BTK_M, _PIP,   _UND,   _LSB,   xxx,    xxx,    xxx,    xxx,    xxx,    ___,    \
-        ___,    _ESC,   _EX,    _SQT,   _MIN,   _LPR,   xxx,    _AR_L,  _AR_D,  _AR_U,  _AR_R,  ___,    \
-        ___,    xxx,    _AT_M,  _BSL,   _TLD,   _LCB,   xxx,    _HOME,  _PG_D,  _PG_U,  _END,   ___,    \
+        xxx,    _TAB,   _BTK_M, _PIP,   _UND,   _LSB,   _BSPC,  xxx,    xxx,    xxx,    xxx,    xxx,    \
+        xxx,    _ESC,   _EX,    _SQT,   _MIN,   _LPR,   _ENT,   _AR_L,  _AR_D,  _AR_U,  _AR_R,  xxx,    \
+        xxx,    xxx,    _AT_M,  _BSL,   _TLD,   _LCB,   _DEL,   _HOME,  _PG_D,  _PG_U,  _END,   xxx,    \
         xxx,    xxx,    xxx,    xxx,    ADJ,    ADJ,    TRNS,   TRNS,   xxx,    xxx,    xxx,    xxx     \
     ),
 
     [ADJUST] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── ─────── */
-        ___,    _F1,    _F2,    _F3,    _F4,    _F5,    _F6,    _F7,    _F8,    _F9,    _F10,   ___,    \
-        ___,    xxx,    _V_VD,  _V_VU,  _V_P,   _F11,   _F12,   _V_P,   _V_VD,  _V_VU,  xxx,    ___,    \
-        ___,    RESET,  xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    RESET,  ___,    \
+        xxx,    _F1,    _F2,    _F3,    _F4,    _F5,    _F6,    _F7,    _F8,    _F9,    _F10,   xxx,    \
+        xxx,    xxx,    _V_VD,  _V_VU,  _V_P,   _F11,   _F12,   _V_P,   _V_VD,  _V_VU,  xxx,    xxx,    \
+        xxx,    xxx,    xxx,    xxx,    xxx,    RESET,   RESET, xxx,    xxx,    xxx,    xxx,    xxx,    \
         xxx,    xxx,    xxx,    xxx,    TRNS,   TRNS,   TRNS,   TRNS,   xxx,    xxx,    xxx,    xxx     \
     )
 
@@ -105,18 +104,7 @@ bool tap_hold(keyrecord_t *record, uint16_t tap_keycode, uint16_t hold_keycode){
     return false;
 }
 
-
-//static uint16_t oneshot_timer; //static is persisted between function calls
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    /* Custom handlers that don't stop key processing */
-    process_capslock(keycode, record);
-
-    // Time out oneshot mods
-    /*if(timer_elapsed(oneshot_timer) > 1500){
-        clear_oneshot_mods();
-    }*/
-
     switch(keycode) {
         case _BTK_M: return tap_hold(record, _BTK, _GBP);
         case _AT_M:  return tap_hold(record, _AT,  _CRT);
@@ -125,4 +113,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
-
