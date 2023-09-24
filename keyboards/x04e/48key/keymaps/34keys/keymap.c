@@ -8,24 +8,22 @@ enum layers { QWERTY, LOWER, RAISE, ADJUST };
 #define _Q_M      LGUI_T(_Q)
 #define _P_M      LGUI_T(_P)
 /* --- Row 2 --- */
-#define _A_M      LALT_T(_A)
-#define _S_M      LCTL_T(_S)
-#define _D_M      LSFT_T(_D)
-#define _K_M      LSFT_T(_K)
-#define _L_M      LCTL_T(_L)
-#define _SCN_M    LALT_T(_SCN)
+#define _A_M      LCTL_T(_A)
+#define _S_M      LSFT_T(_S)
+#define _L_M      LSFT_T(_L)
+#define _SCN_M    LCTL_T(_SCN)
 /* --- Row 3 --- */
+#define _Z_M      LALT_T(_Z)
+#define _SL_M     LALT_T(_SL)
 /* --- Row 4 --- */
 #define THM1      LSFT_T(_DEL)
-#define LWR       LT(LOWER, _SPC)
-#define RSE       LT(RAISE, _BSPC)
+#define THM2      LT(LOWER, _SPC)
+#define THM3      LT(RAISE, _BSPC)
 #define THM4      LSFT_T(_ENT)
 /**/
 
 /* Other mods */
 #define ADJ       MO(ADJUST)
-#define _DOT_M    LT(0, _DOT)
-#define _UPPR     LT(0, KC_NO)
 
 #define _BTK_M    LT(0, _BTK)
 #define _AT_M     LT(0, _AT)
@@ -38,24 +36,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── ─────── */
         xxx,    _Q_M,   _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,     _P_M,   xxx,    \
         xxx,    _A_M,   _S_M,   _D,     _F,     _G,     _H,     _J,     _K,     _L_M,   _SCN_M, xxx,    \
-        xxx,    _Z,     _X,     _C,     _V,     _B,     _N,     _M,     _SPC,   _DOT_M, _SL,    xxx,    \
-        xxx,    xxx,    xxx,    xxx,    THM1,   LWR,    RSE,    THM4,   xxx,    xxx,    xxx,    xxx     \
+        xxx,    _Z_M,   _X,     _C,     _V,     _B,     _N,     _M,     _COM,   _DOT,   _SL_M,  xxx,    \
+        xxx,    xxx,    xxx,    xxx,    THM1,   THM2,   THM3,   THM4,   xxx,    xxx,    xxx,    xxx     \
     ),
 
     [LOWER] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── ─────── */
-        ___,    _TAB,   _BTK_M, _PIP,   _UND,   _LSB,   xxx,    xxx,    xxx,    xxx,    xxx,    ___,    \
-        ___,    _ESC,   _EX,    _SQT,   _MIN,   _LPR,   xxx,    _AR_L,  _AR_D,  _AR_U,  _AR_R,  ___,    \
-        ___,    _UPPR,  _AT_M,  _BSL,   _TLD,   _LCB,   xxx,    _HOME,  _PG_D,  _PG_U,  _END,   ___,    \
-        xxx,    xxx,    xxx,    xxx,    _BSPC,  TRNS,   ADJ,    _ENT,   xxx,    xxx,    xxx,    xxx     \
+        ___,    xxx,    _7,     _8,     _9,     xxx,    _RSB,   _PLS,   _AMP,   _LAB_M, _BSPC,  ___,    \
+        ___,    _0,     _4,     _5,     _6,     xxx,    _RPR,   _DQT,   _USD,   _RAB,   _ENT,   ___,    \
+        ___,    xxx,    _1,     _2,     _3,     xxx,    _RCB,   _EQ,    _AST,   _HSH_M, _DEL,   ___,    \
+        xxx,    xxx,    xxx,    xxx,    TRNS,   TRNS,   ADJ,    ADJ,    xxx,    xxx,    xxx,    xxx     \
     ),
 
     [RAISE] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── ─────── */
-        ___,    xxx,    _7,     _8,     _9,     xxx,    _RSB,   _PLS,   _AMP,   _LAB_M, _BSPC,  ___,    \
-        ___,    _0,     _4,     _5,     _6,     xxx,    _RPR,   _DQT,   _USD,   _RAB,   _ENT,   ___,    \
-        ___,    xxx,    _1,     _2,     _3,     xxx,    _RCB,   _EQ,    _AST,   _HSH_M, _DEL,   ___,    \
-        xxx,    xxx,    xxx,    xxx,    _BSPC,  ADJ,    TRNS,   _ENT,   xxx,    xxx,    xxx,    xxx     \
+        ___,    _TAB,   _BTK_M, _PIP,   _UND,   _LSB,   xxx,    xxx,    xxx,    xxx,    xxx,    ___,    \
+        ___,    _ESC,   _EX,    _SQT,   _MIN,   _LPR,   xxx,    _AR_L,  _AR_D,  _AR_U,  _AR_R,  ___,    \
+        ___,    xxx,    _AT_M,  _BSL,   _TLD,   _LCB,   xxx,    _HOME,  _PG_D,  _PG_U,  _END,   ___,    \
+        xxx,    xxx,    xxx,    xxx,    ADJ,    ADJ,    TRNS,   TRNS,   xxx,    xxx,    xxx,    xxx     \
     ),
 
     [ADJUST] = LAYOUT( \
@@ -63,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ___,    _F1,    _F2,    _F3,    _F4,    _F5,    _F6,    _F7,    _F8,    _F9,    _F10,   ___,    \
         ___,    xxx,    _V_VD,  _V_VU,  _V_P,   _F11,   _F12,   _V_P,   _V_VD,  _V_VU,  xxx,    ___,    \
         ___,    RESET,  xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    RESET,  ___,    \
-        xxx,    xxx,    xxx,    xxx,    xxx,    TRNS,   TRNS,   xxx,    xxx,    xxx,    xxx,    xxx     \
+        xxx,    xxx,    xxx,    xxx,    TRNS,   TRNS,   TRNS,   TRNS,   xxx,    xxx,    xxx,    xxx     \
     )
 
 };
@@ -71,17 +69,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         /* Important symbol layer keys get short tapping term */
-        case _DOT_M:
-            return 120;
-
         case _UPPR:
             return 200;
 
         case _BTK_M: case _AT_M:
         case _LAB_M: case _HSH_M:
-            return 180;
-
-        case LWR: case RSE:
+        case THM1: case THM2:
+        case THM3: case THM4:
             return 180;
 
         default:
@@ -192,77 +186,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }*/
 
     switch(keycode) {
-        case _DOT_M:
-            if(is_held(record)){
-                if(is_pressed(record)) {
-                    register_code16(_COM);
-                } else {
-                    unregister_code16(_COM);
-                }
-                return false;
-            }
-            break;
-        case _BTK_M:
-            if(is_tapped(record)){
-                if(is_pressed(record)) {
-                    register_code16(_BTK);
-                } else {
-                    unregister_code16(_BTK);
-                }
-            } else {
-                if(is_pressed(record)) {
-                    register_code16(_GBP);
-                } else {
-                    unregister_code16(_GBP);
-                }
-            }
-            return false;
-        case _AT_M:
-            if(is_tapped(record)){
-                if(is_pressed(record)) {
-                    register_code16(_AT);
-                } else {
-                    unregister_code16(_AT);
-                }
-            } else {
-                if(is_pressed(record)) {
-                    register_code16(_CRT);
-                } else {
-                    unregister_code16(_CRT);
-                }
-            }
-            return false;
-        case _LAB_M:
-            if(is_tapped(record)){
-                if(is_pressed(record)) {
-                    register_code16(_LAB);
-                } else {
-                    unregister_code16(_LAB);
-                }
-            } else {
-                if(is_pressed(record)) {
-                    register_code16(_PRC);
-                } else {
-                    unregister_code16(_PRC);
-                }
-            }
-            return false;
-        case _HSH_M:
-            if(is_tapped(record)){
-                if(is_pressed(record)) {
-                    register_code16(_HSH);
-                } else {
-                    unregister_code16(_HSH);
-                }
-            } else {
-                if(is_pressed(record)) {
-                    register_code16(_EUR);
-                } else {
-                    unregister_code16(_EUR);
-                }
-            }
-            return false;
-
+        case _BTK_M: return tap_hold(record, _BTK, _GBP);
+        case _AT_M:  return tap_hold(record, _AT,  _CRT);
+        case _LAB_M: return tap_hold(record, _LAB, _PRC);
+        case _HSH_M: return tap_hold(record, _HSH, _EUR);
     }
     return true;
 }
