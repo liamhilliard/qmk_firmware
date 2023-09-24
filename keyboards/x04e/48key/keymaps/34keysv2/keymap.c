@@ -8,13 +8,13 @@ enum layers { QWERTY, LOWER, RAISE, ADJUST };
 #define _Q_M      LGUI_T(_Q)
 #define _P_M      LGUI_T(_P)
 /* --- Row 2 --- */
-#define _A_M      LCTL_T(_A)
+#define _A_M      LALT_T(_A)
 #define _S_M      LSFT_T(_S)
 #define _L_M      LSFT_T(_L)
-#define _SCN_M    LCTL_T(_SCN)
+#define _SCN_M    LALT_T(_SCN)
 /* --- Row 3 --- */
-#define _Z_M      LALT_T(_Z)
-#define _SL_M     LALT_T(_SL)
+#define _Z_M      LCTL_T(_Z)
+#define _SL_M     LCTL_T(_SL)
 /* --- Row 4 --- */
 #define THM1      LSFT_T(_DEL)
 #define THM2      LT(LOWER, _SPC)
