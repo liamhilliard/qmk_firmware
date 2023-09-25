@@ -41,17 +41,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LOWER] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── ─────── */
-        xxx,    xxx,    _7,     _8,     _9,     _TAB,   _RSB,   _PLS,   _AMP,   _LAB_M, _BSPC,  xxx,    \
-        xxx,    _0,     _4,     _5,     _6,     _ESC,   _RPR,   _DQT,   _USD,   _RAB,   _ENT,   xxx,    \
-        xxx,    xxx,    _1,     _2,     _3,     xxx,    _RCB,   _EQ,    _AST,   _HSH_M, _DEL,   xxx,    \
+        xxx,    _TAB,   _BTK_M, _PIP,   _UND,   _LSB,   _BSPC,  xxx,    xxx,    xxx,    xxx,    xxx,    \
+        xxx,    _ESC,   _EX,    _SQT,   _MIN,   _LPR,   _ENT,   _AR_L,  _AR_D,  _AR_U,  _AR_R,  xxx,    \
+        xxx,    xxx,    _AT_M,  _BSL,   _TLD,   _LCB,   _DEL,   _HOME,  _PG_D,  _PG_U,  _END,   xxx,    \
         xxx,    xxx,    xxx,    xxx,    TRNS,   TRNS,   ADJ,    ADJ,    xxx,    xxx,    xxx,    xxx     \
     ),
 
     [RAISE] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── ─────── */
-        xxx,    _TAB,   _BTK_M, _PIP,   _UND,   _LSB,   _BSPC,  xxx,    xxx,    xxx,    xxx,    xxx,    \
-        xxx,    _ESC,   _EX,    _SQT,   _MIN,   _LPR,   _ENT,   _AR_L,  _AR_D,  _AR_U,  _AR_R,  xxx,    \
-        xxx,    xxx,    _AT_M,  _BSL,   _TLD,   _LCB,   _DEL,   _HOME,  _PG_D,  _PG_U,  _END,   xxx,    \
+        xxx,    xxx,    _7,     _8,     _9,     _TAB,   _RSB,   _PLS,   _AMP,   _LAB_M, _BSPC,  xxx,    \
+        xxx,    _0,     _4,     _5,     _6,     _ESC,   _RPR,   _DQT,   _USD,   _RAB,   _ENT,   xxx,    \
+        xxx,    xxx,    _1,     _2,     _3,     xxx,    _RCB,   _EQ,    _AST,   _HSH_M, _DEL,   xxx,    \
         xxx,    xxx,    xxx,    xxx,    ADJ,    ADJ,    TRNS,   TRNS,   xxx,    xxx,    xxx,    xxx     \
     ),
 
