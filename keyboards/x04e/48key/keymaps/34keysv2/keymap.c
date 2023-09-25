@@ -79,10 +79,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-bool is_pressed(keyrecord_t *record) { return record->event.pressed; }
-bool is_released(keyrecord_t *record) { return !is_pressed(record); }
-bool is_tapped(keyrecord_t *record) { return record->tap.count; }
-bool is_held(keyrecord_t *record) { return !is_tapped(record); }
+bool is_pressed(keyrecord_t *record) { return record -> event.pressed; }
+bool is_released(keyrecord_t *record) { return !record -> event.pressed; }
+bool is_tapped(keyrecord_t *record) { return record -> tap.count; }
+bool is_held(keyrecord_t *record) { return !record -> tap.count; }
 
 bool tap_hold(keyrecord_t *record, uint16_t tap_keycode, uint16_t hold_keycode){
     if(is_tapped(record)){
