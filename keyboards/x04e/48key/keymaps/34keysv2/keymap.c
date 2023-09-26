@@ -9,12 +9,12 @@ enum layers { QWERTY, LOWER, RAISE, ADJUST };
 #define _P_M      LGUI_T(_P)
 /* --- Row 2 --- */
 #define _A_M      LALT_T(_A)
-#define _S_M      LSFT_T(_S)
-#define _L_M      LSFT_T(_L)
+#define _S_M      LCTL_T(_S)
+#define _D_M      LSFT_T(_D)
+#define _K_M      LSFT_T(_K)
+#define _L_M      LCTL_T(_L)
 #define _SCN_M    LALT_T(_SCN)
 /* --- Row 3 --- */
-#define _Z_M      LCTL_T(_Z)
-#define _SL_M     LCTL_T(_SL)
 /* --- Row 4 --- */
 #define THM1      LSFT_T(_DEL)
 #define THM2      LT(LOWER, _SPC)
@@ -35,14 +35,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [QWERTY] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── ─────── */
         xxx,    _Q_M,   _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,     _P_M,   xxx,    \
-        xxx,    _A_M,   _S_M,   _D,     _F,     _G,     _H,     _J,     _K,     _L_M,   _SCN_M, xxx,    \
-        xxx,    _Z_M,   _X,     _C,     _V,     _B,     _N,     _M,     _SPC,   _DOT_M, _SL_M,  xxx,    \
+        xxx,    _A_M,   _S_M,   _D_M,   _F,     _G,     _H,     _J,     _K_M,   _L_M,   _SCN_M, xxx,    \
+        xxx,    _Z,     _X,     _C,     _V,     _B,     _N,     _M,     _SPC,   _DOT_M, _SL,    xxx,    \
         xxx,    xxx,    xxx,    xxx,    THM1,   THM2,   THM3,   THM4,   xxx,    xxx,    xxx,    xxx     \
     ),
 
     [LOWER] = LAYOUT( \
      /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── ─────── */
-         xxx,    _TAB,   _BTK_M, _PIP,   _UND,   _LSB,   _BSPC,  xxx,    xxx,    xxx,    xxx,    xxx,    \
+        xxx,    _TAB,   _BTK_M, _PIP,   _UND,   _LSB,   _BSPC,  xxx,    xxx,    xxx,    xxx,    xxx,    \
         xxx,    _ESC,   _EX,    _SQT,   _MIN,   _LPR,   _ENT,   _AR_L,  _AR_D,  _AR_U,  _AR_R,  xxx,    \
         xxx,    xxx,    _AT_M,  _BSL,   _TLD,   _LCB,   _DEL,   _HOME,  _PG_D,  _PG_U,  _END,   xxx,    \
         xxx,    xxx,    xxx,    xxx,    TRNS,   TRNS,   ADJ,    ADJ,    xxx,    xxx,    xxx,    xxx     \
@@ -104,6 +104,19 @@ bool tap_hold(keyrecord_t *record, uint16_t tap_keycode, uint16_t hold_keycode){
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    #ifdef CONSOLE_ENABLE
+        uprintf("0x%04X,%u,%u,%u,%b,0x%02X,0x%02X,%u\n",
+             keycode,
+             record->event.key.row,
+             record->event.key.col,
+             get_highest_layer(layer_state),
+             record->event.pressed,
+             get_mods(),
+             get_oneshot_mods(),
+             record->tap.count
+         );
+    #endif
+
     switch(keycode) {
         case _DOT_M: return tap_hold(record, _DOT, _COM);
         case _BTK_M: return tap_hold(record, _BTK, _GBP);
