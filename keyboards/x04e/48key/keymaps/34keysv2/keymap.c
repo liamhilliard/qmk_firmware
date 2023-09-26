@@ -24,7 +24,6 @@ enum layers { QWERTY, LOWER, RAISE, ADJUST };
 
 /* Other mods */
 #define ADJ       MO(ADJUST)
-#define _DOT_M    LT(0, _DOT)
 #define _BTK_M    LT(0, _BTK)
 #define _AT_M     LT(0, _AT)
 #define _LAB_M    LT(0, _LAB)
@@ -36,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── ─────── */
         xxx,    _Q_M,   _W,     _E,     _R,     _T,     _Y,     _U,     _I,     _O,     _P_M,   xxx,    \
         xxx,    _A_M,   _S_M,   _D_M,   _F,     _G,     _H,     _J,     _K_M,   _L_M,   _SCN_M, xxx,    \
-        xxx,    _Z,     _X,     _C,     _V,     _B,     _N,     _M,     _SPC,   _DOT_M, _SL,    xxx,    \
+        xxx,    _Z,     _X,     _C,     _V,     _B,     _N,     _M,     _COM,   _DOT,   _SL,    xxx,    \
         xxx,    xxx,    xxx,    xxx,    THM1,   THM2,   THM3,   THM4,   xxx,    xxx,    xxx,    xxx     \
     ),
 
@@ -71,7 +70,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         /* Important symbol layer keys get short tapping term */
         case _BTK_M: case _AT_M:
         case _LAB_M: case _HSH_M:
-        case _DOT_M:
         case THM1: case THM2:
         case THM3: case THM4:
             return 180;
@@ -118,7 +116,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     #endif
 
     switch(keycode) {
-        case _DOT_M: return tap_hold(record, _DOT, _COM);
         case _BTK_M: return tap_hold(record, _BTK, _GBP);
         case _AT_M:  return tap_hold(record, _AT,  _CRT);
         case _LAB_M: return tap_hold(record, _LAB, _PRC);
