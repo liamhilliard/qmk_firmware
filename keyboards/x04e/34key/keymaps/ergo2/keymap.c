@@ -86,28 +86,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 static bool caps_on = false; /* Tracks state of CAPSLOCK */
 static bool caps_word_on = false; /* Tracks whether caps word is active */
 
-bool is_pressed(keyrecord_t *record) { return record->event.pressed; }
-bool is_released(keyrecord_t *record) { return !is_pressed(record); }
-bool is_tapped(keyrecord_t *record) { return record->tap.count; }
-bool is_held(keyrecord_t *record) { return !is_tapped(record); }
-
-bool tap_hold(keyrecord_t *record, uint16_t tap_keycode, uint16_t hold_keycode){
-    if(is_tapped(record)){
-        if(is_pressed(record)) {
-            register_code16(tap_keycode);
-        } else {
-            unregister_code16(tap_keycode);
-        }
-    } else {
-        if(is_pressed(record)) {
-            register_code16(hold_keycode);
-        } else {
-            unregister_code16(hold_keycode);
-        }
-    }
-    return false;
-}
-
 void process_capslock(uint16_t keycode, keyrecord_t *record){
     #ifdef CONSOLE_ENABLE
         uprintf("0x%04X,%u,%u,%u,%b,0x%02X,0x%02X,%u\n",
