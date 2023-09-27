@@ -16,10 +16,10 @@ enum layers { QWERTY, LOWER, RAISE, ADJUST };
 #define _SCN_M    LALT_T(_SCN)
 /* --- Row 3 --- */
 /* --- Row 4 --- */
-#define THM1      LT(LOWER, _DEL)
-#define THM2      LCTL_T(_SPC)
-#define THM3      LSFT_T(_BSPC)
-#define THM4      LT(RAISE, _ENT)
+#define THM1      LCTL_T(_DEL)
+#define THM2      LT(LOWER, _SPC)
+#define THM3      LT(RAISE, _BSPC)
+#define THM4      LSFT_T(_ENT)
 /**/
 
 /* Other mods */
