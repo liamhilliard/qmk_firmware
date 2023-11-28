@@ -16,7 +16,7 @@ enum layers { QWERTY, LOWER, RAISE, ADJUST };
 #define _SCN_M    LALT_T(_SCN)
 /* --- Row 3 --- */
 /* --- Row 4 --- */
-#define THM1      LCTL_T(_DEL)
+#define THM1      LSFT_T(_DEL)
 #define THM2      LT(LOWER, _SPC)
 #define THM3      LT(RAISE, _BSPC)
 #define THM4      LSFT_T(_ENT)
