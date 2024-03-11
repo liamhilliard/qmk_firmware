@@ -16,8 +16,8 @@ enum layers { QWERTY, LOWER, RAISE, ADJUST };
 #define _SCN_M    LALT_T(_SCN)
 /* --- Row 3 --- */
 /* --- Row 4 --- */
-#define LWR      MO(LOWER)
-#define RSE      MO(RAISE)
+#define LWR      OSL(LOWER)
+#define RSE      OSL(RAISE)
 /**/
 
 /* Other mods */
