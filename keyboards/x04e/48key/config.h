@@ -87,3 +87,7 @@
 #define NO_ACTION_MACRO
 #define NO_ACTION_FUNCTION
 
+/* Oneshot settings */
+#define ONESHOT_TAP_TOGGLE 5
+#define ONESHOT_TIMEOUT 500
+
