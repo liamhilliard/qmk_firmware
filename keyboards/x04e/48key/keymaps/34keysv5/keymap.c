@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /* ─────── ─────── ─────── ─────── ─────── ───────|─────── ─────── ─────── ─────── ─────── ─────── */
         xxx,    _F1,    _F2,    _F3,    _F4,    _F5,    _F6,    _F7,    _F8,    _F9,    _F10,   xxx,    \
         xxx,    xxx,    _V_VD,  _V_VU,  _V_P,   _F11,   _F12,   _V_P,   _V_VD,  _V_VU,  xxx,    xxx,    \
-        xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    \
+        xxx,    _CAPS,  xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    xxx,    _CAPS,  xxx,    \
         xxx,    xxx,    xxx,    xxx,    TRNS,   RESET,  RESET,  TRNS,   xxx,    xxx,    xxx,    xxx     \
     )
 
